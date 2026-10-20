@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-page-node-id="CgN0yAk1lD2j8HVSYazTqt" data-dm-ref="1"><head data-page-node-id="RHZZAmLVicWSm72FCoO1zz">
+<meta charset="UTF-8" data-page-node-id="TZ6O5KostxveMpIIPpFZyE">
+<meta name="viewport" content="width=device-width, initial-scale=1.0" data-page-node-id="7yY5TIfyMOlS9QVyqcp1En">
+<title>同饮一河水 · 黄河流域九省协同记</title>
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml" data-page-node-id="BBFBERgxfCELII9czsSjdX">
+<link rel="preconnect" href="https://fonts.googleapis.com" data-page-node-id="oInzGNUi3U2F51tlqnP4bC">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" data-page-node-id="wN40yDIcl3JiuluQifnD4Y">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&amp;family=Noto+Serif+SC:wght@600;700;900&amp;display=swap" rel="stylesheet" data-page-node-id="LjhFKMzyt5nQAMGVgWhak0">
+<style>
+/* ============================================================
+   同饮一河水 · 黄河流域九省协同记
+   版式参照 53194.mysxl.cn 数据新闻长页六件套
+   ============================================================ */
+:root{
+  --paper:#FDFBEF;        /* 主底色：暖米白 */
+  --paper-2:#F8F3DF;      /* 次级米黄 */
+  --paper-3:#F2EACF;      /* 浅米黄块 */
+  --ink:#332F26;          /* 主文字 */
+  --ink-2:#5E5747;        /* 次文字 */
+  --ink-3:#948C77;        /* 弱文字 */
+  --gold:#C9962A;         /* 主金 */
+  --gold-d:#A87B1E;       /* 深金 */
+  --gold-l:#E3B85C;       /* 浅金 */
+  --orange:#E07B3C;       /* 橙 */
+  --green:#2E8B6E;        /* 辅助绿（图谱色系） */
+  --line:#E6DEC5;         /* 分隔线 */
+  --max:1180px;
+  --nav-h:60px;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;}
+body{
+  background:var(--paper);
+  color:var(--ink);
+  font-family:"Noto Sans SC","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  font-weight:400;
+  line-height:1.9;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+img{display:block;max-width:100%;}
+a{color:inherit;text-decoration:none;}
+::selection{background:rgba(227,184,92,.45);color:var(--ink);}
+
+/* ---------------- 顶部导航 ---------------- */
+.nav{
+  position:fixed;top:0;left:0;right:0;height:var(--nav-h);z-index:100;
+  display:flex;align-items:center;justify-content:flex-end;
+  padding:0 clamp(16px,4vw,52px);
+  transition:background .35s ease,box-shadow .35s ease,backdrop-filter .35s;
+}
+.nav a{
+  position:relative;
+  margin-left:clamp(14px,2.2vw,34px);
+  font-size:14px;letter-spacing:.06em;
+  color:rgba(255,255,255,.86);
+  padding-bottom:3px;
+  transition:color .25s;
+  white-space:nowrap;
+}
+.nav a::after{
+  content:"";position:absolute;left:0;right:0;bottom:0;height:1.5px;
+  background:var(--gold-l);transform:scaleX(0);transform-origin:left;
+  transition:transform .3s cubic-bezier(.2,.7,.3,1);
+}
+.nav a:hover::after,.nav a.on::after{transform:scaleX(1);}
+.nav.solid{
+  background:rgba(253,251,239,.94);
+  backdrop-filter:blur(10px);
+  box-shadow:0 1px 0 var(--line);
+}
+.nav.solid a{color:var(--ink-2);}
+.nav.solid a:hover,.nav.solid a.on{color:var(--gold-d);}
+
+/* ---------------- 封面 ---------------- */
+.cover{
+  position:relative;height:100vh;min-height:620px;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  overflow:hidden;text-align:center;
+}
+/* 封面：整图 100% 放置（不裁切），顶部预留给图内书法标题 */
+.cover .bg{
+  position:absolute;inset:0;
+  background:url("assets/cover.jpg") center top/100% 100% no-repeat;
+  background-size:100% 100%;
+}
+.cover .veil{
+  position:absolute;inset:0;
+  background:
+    radial-gradient(115% 70% at 50% 62%, rgba(24,20,14,0) 34%, rgba(24,20,14,.40) 100%),
+    linear-gradient(180deg, rgba(16,26,34,.10) 0%, rgba(20,17,12,.05) 30%, rgba(20,17,12,.10) 62%, rgba(16,14,10,.62) 100%);
+}
+.cover .inner{
+  position:relative;z-index:2;padding:0 24px;
+  margin-top:12vh;
+}
+.cover .gen{
+  font-family:"Noto Serif SC",serif;
+  font-size:clamp(23px,3.1vw,40px);
+  font-weight:700;line-height:2;
+  color:#FFFAEE;
+  letter-spacing:.06em;
+  text-shadow:0 2px 24px rgba(24,18,8,.5),0 1px 2px rgba(0,0,0,.28);
+}
+.cover .gen em{font-style:normal;color:#FFE9AE;}
+.cover .line{
+  width:64px;height:2px;margin:32px auto 0;
+  background:linear-gradient(90deg,transparent,var(--gold-l),transparent);
+}
+.cover .tag{
+  margin-top:25px;font-size:clamp(12.5px,1.15vw,14px);
+  letter-spacing:.32em;color:rgba(255,246,224,.88);text-indent:.32em;
+  text-shadow:0 1px 10px rgba(0,0,0,.4);
+}
+.scroll-cue{
+  position:absolute;left:50%;bottom:34px;transform:translateX(-50%);
+  z-index:3;display:flex;flex-direction:column;align-items:center;gap:9px;
+  color:rgba(255,245,225,.72);font-size:11.5px;letter-spacing:.34em;
+  text-indent:.34em;
+}
+.scroll-cue i{
+  display:block;width:1px;height:44px;
+  background:linear-gradient(180deg,rgba(255,245,225,.05),rgba(255,245,225,.85));
+  animation:cue 2.1s ease-in-out infinite;
+  transform-origin:top;
+}
+@keyframes cue{0%,100%{transform:scaleY(.35);opacity:.4;}50%{transform:scaleY(1);opacity:1;}}
+
+/* ---------------- 通用容器 ---------------- */
+.wrap{max-width:var(--max);margin:0 auto;padding:0 clamp(20px,4vw,40px);}
+.narrow{max-width:820px;}
+
+/* 引言 */
+.intro{padding:clamp(84px,11vw,140px) 0 clamp(64px,8vw,104px);text-align:center;}
+.intro .lead{
+  font-family:"Noto Serif SC",serif;
+  font-size:clamp(20px,2.35vw,28px);line-height:2.1;
+  color:var(--ink);font-weight:600;letter-spacing:.02em;
+}
+.intro .lead em{font-style:normal;color:var(--gold-d);}
+.intro .body{
+  margin:34px auto 0;max-width:720px;
+  font-size:clamp(15px,1.35vw,16.5px);line-height:2.15;color:var(--ink-2);
+  text-align:left;
+}
+.intro .body p+p{margin-top:18px;}
+.intro .body strong{color:var(--ink);font-weight:700;}
+.quote-mark{
+  display:block;margin:0 auto 8px;width:34px;height:34px;opacity:.55;
+}
+
+/* 章节带 */
+.band{
+  position:relative;height:clamp(300px,42vw,460px);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  overflow:hidden;text-align:center;color:#fff;
+}
+.band .bg{position:absolute;inset:0;background-size:cover;background-position:center;transform:scale(1.03);}
+.band .veil{
+  position:absolute;inset:0;
+  background:
+    linear-gradient(180deg,rgba(22,17,10,.56),rgba(22,17,10,.32) 46%,rgba(22,17,10,.62)),
+    radial-gradient(70% 100% at 50% 50%, rgba(30,22,12,.10) 0%, rgba(30,22,12,.42) 100%);
+}
+.band .inner{position:relative;z-index:2;padding:0 22px;}
+.band .no{
+  font-size:12px;letter-spacing:.5em;text-indent:.5em;
+  color:rgba(255,240,205,.78);margin-bottom:18px;
+}
+.band h2{
+  font-family:"Noto Serif SC",serif;
+  font-size:clamp(26px,3.9vw,42px);font-weight:900;letter-spacing:.05em;
+  text-shadow:0 3px 26px rgba(0,0,0,.4);
+  line-height:1.35;
+}
+.band .sub{
+  margin-top:14px;font-size:clamp(13px,1.35vw,16px);
+  letter-spacing:.22em;text-indent:.22em;color:rgba(255,245,225,.9);
+}
+
+/* 章节内容 */
+.chapter{padding:clamp(64px,8.5vw,112px) 0 clamp(40px,5vw,64px);}
+.chapter .q{
+  text-align:center;
+  font-family:"Noto Serif SC",serif;
+  font-size:clamp(21px,2.6vw,31px);font-weight:700;line-height:1.7;
+  color:var(--ink);letter-spacing:.01em;
+  max-width:860px;margin:0 auto;
+}
+.chapter .q span{color:var(--gold-d);}
+.chapter .gen{
+  max-width:760px;margin:22px auto 0;text-align:center;
+  font-size:clamp(14.5px,1.35vw,16.5px);color:var(--ink-2);line-height:2.05;
+}
+
+/* 叙事段落 */
+.prose{
+  max-width:800px;margin:0 auto;
+  font-size:clamp(15px,1.4vw,17px);line-height:2.2;color:var(--ink-2);
+}
+.prose p+p{margin-top:20px;}
+.prose strong{color:var(--ink);font-weight:700;}
+.prose .hi{color:var(--gold-d);font-weight:700;}
+.prose.center{text-align:center;}
+
+/* 图表容器：参照参考站，默认无卡片框，图表直接落在米白底上 */
+.figure{
+  margin:clamp(30px,4vw,48px) auto 0;max-width:1000px;
+}
+.figure.wide{max-width:1120px;}
+.figure .frame{
+  position:relative;
+  background:transparent;
+  border:0;
+  border-radius:0;
+  overflow:hidden;
+}
+.figure .frame iframe{display:block;width:100%;border:0;background:transparent;}
+/* 需要实体底色的图（地图、图谱面板、国风宣纸图）才加卡片 */
+.figure.card .frame{
+  background:var(--paper);
+  border:1px solid var(--line);
+  border-radius:14px;
+  box-shadow:0 18px 44px -26px rgba(83,64,22,.28);
+}
+.figcap{
+  margin-top:14px;text-align:center;
+  font-size:13px;color:var(--ink-3);letter-spacing:.04em;
+}
+.figcap b{color:var(--ink-2);font-weight:500;}
+.src{
+  margin-top:8px;text-align:center;
+  font-size:11.5px;color:var(--ink-3);line-height:1.75;
+  letter-spacing:.01em;
+}
+.src::before{content:"数据来源：";opacity:.85;}
+
+/* 三数字/四数字卡 */
+.nums{
+  display:grid;gap:clamp(12px,1.6vw,20px);
+  margin:clamp(32px,4vw,50px) auto 0;max-width:1000px;
+}
+.nums.c2{grid-template-columns:repeat(2,1fr);}
+.nums.c3{grid-template-columns:repeat(3,1fr);}
+.nums.c4{grid-template-columns:repeat(4,1fr);}
+.num{
+  display:flex;flex-direction:column;
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:12px;
+  padding:clamp(18px,2.1vw,28px) clamp(14px,1.8vw,24px);
+  text-align:center;
+  transition:transform .3s cubic-bezier(.2,.7,.3,1),box-shadow .3s;
+}
+.num:hover{transform:translateY(-3px);box-shadow:0 16px 34px -20px rgba(83,64,22,.4);}
+.num .v{
+  font-family:"Noto Serif SC",serif;
+  font-size:clamp(26px,3.3vw,40px);font-weight:900;
+  color:var(--gold-d);line-height:1.2;letter-spacing:-.01em;
+  font-variant-numeric:tabular-nums;
+}
+.num .v small{font-size:.44em;font-weight:700;margin-left:3px;color:var(--gold);}
+.num .k{
+  margin-top:8px;font-size:13.5px;font-weight:700;color:var(--ink);
+  line-height:1.6;
+}
+.num .d{
+  margin-top:6px;font-size:12px;color:var(--ink-3);line-height:1.75;
+  margin-bottom:12px;
+}
+.num .s{
+  margin-top:auto;padding-top:8px;border-top:1px dashed var(--line);
+  font-size:10.5px;color:var(--ink-3);line-height:1.7;
+}
+
+/* 里程碑列表（图下要点） */
+.miles{
+  max-width:940px;margin:clamp(34px,4vw,52px) auto 0;
+  display:grid;gap:0;
+}
+.mile{
+  display:grid;grid-template-columns:118px 1fr;gap:clamp(14px,2vw,26px);
+  padding:20px 0;border-top:1px solid var(--line);align-items:start;
+}
+.mile:last-child{border-bottom:1px solid var(--line);}
+.mile .y{
+  font-family:"Noto Serif SC",serif;font-size:20px;font-weight:900;
+  color:var(--gold-d);letter-spacing:.01em;font-variant-numeric:tabular-nums;
+  line-height:1.5;
+}
+.mile .t{font-size:15px;font-weight:700;color:var(--ink);line-height:1.7;}
+.mile .x{margin-top:4px;font-size:13.5px;color:var(--ink-2);line-height:1.85;}
+
+/* 引文块 */
+.pull{
+  max-width:760px;margin:clamp(40px,5vw,62px) auto 0;
+  background:linear-gradient(135deg,#FBF6E3,#F6EED4);
+  border-left:3px solid var(--gold-l);
+  border-radius:0 12px 12px 0;
+  padding:clamp(22px,2.6vw,34px) clamp(22px,3vw,40px);
+  text-align:center;
+}
+.pull p{
+  font-family:"Noto Serif SC",serif;
+  font-size:clamp(17px,2vw,23px);font-weight:700;
+  color:var(--gold-d);line-height:1.85;letter-spacing:.03em;
+}
+.pull .who{
+  margin-top:12px;font-size:12px;color:var(--ink-3);letter-spacing:.08em;
+}
+
+/* 交互提示 */
+.tipbar{
+  max-width:1000px;margin:14px auto 0;
+  display:flex;justify-content:center;gap:20px;flex-wrap:wrap;
+  font-size:12px;color:var(--ink-3);letter-spacing:.03em;
+}
+.tipbar span{display:inline-flex;align-items:center;gap:6px;}
+.tipbar span::before{
+  content:"";width:5px;height:5px;border-radius:50%;
+  background:var(--gold-l);flex:none;
+}
+
+/* 小标语条 */
+.ribbon{
+  max-width:900px;margin:clamp(30px,4vw,46px) auto 0;
+  text-align:center;font-size:clamp(13px,1.25vw,15px);
+  color:var(--ink-2);letter-spacing:.06em;line-height:2;
+  padding:16px 20px;
+  background:var(--paper-2);border-radius:10px;
+}
+.ribbon b{color:var(--gold-d);}
+
+/* 结语 */
+.finale{
+  position:relative;margin-top:clamp(60px,8vw,100px);
+  padding:clamp(80px,10vw,132px) 0 clamp(64px,7vw,92px);
+  text-align:center;overflow:hidden;
+}
+.finale .bg{
+  position:absolute;inset:0;
+  background:url("assets/bg.jpg") center 62%/cover no-repeat;
+  filter:grayscale(.15) brightness(.62);
+}
+.finale .veil{
+  position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(28,22,14,.62),rgba(28,22,14,.48) 40%,rgba(28,22,14,.78));
+}
+.finale .inner{position:relative;z-index:2;color:#FBF4E2;padding:0 22px;}
+.finale .no{
+  font-size:12px;letter-spacing:.5em;text-indent:.5em;
+  color:rgba(255,240,205,.72);margin-bottom:20px;
+}
+.finale h2{
+  font-family:"Noto Serif SC",serif;
+  font-size:clamp(26px,3.9vw,42px);font-weight:900;letter-spacing:.05em;
+  line-height:1.4;text-shadow:0 3px 26px rgba(0,0,0,.4);
+}
+.finale .epi{
+  margin:34px auto 0;max-width:660px;
+  font-size:clamp(15px,1.55vw,18px);line-height:2.3;
+  color:rgba(251,244,226,.9);
+}
+.finale .epi p+p{margin-top:6px;}
+.finale .seal{
+  width:44px;height:2px;margin:38px auto 0;
+  background:linear-gradient(90deg,transparent,var(--gold-l),transparent);
+}
+
+/* 落款 */
+.credit{
+  background:#2A241A;color:rgba(240,232,213,.62);
+  padding:clamp(38px,4.6vw,58px) 0 clamp(34px,4vw,48px);
+  font-size:12.5px;line-height:2;
+}
+.credit .wrap{max-width:900px;}
+.credit .h{
+  font-size:11px;letter-spacing:.3em;color:rgba(227,184,92,.85);
+  margin-bottom:12px;
+}
+.credit p+p{margin-top:6px;}
+.credit .meta{
+  margin-top:22px;padding-top:18px;
+  border-top:1px solid rgba(240,232,213,.14);
+  display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
+  font-size:11.5px;color:rgba(240,232,213,.45);letter-spacing:.06em;
+}
+
+/* 进场动画 */
+/* 兜底：JS 没跑（或被禁）时内容必须可见，否则整页只剩米白底色 */
+.reveal{opacity:1;transform:none;}
+.js-ready .reveal{opacity:0;transform:translateY(22px);transition:opacity .9s cubic-bezier(.2,.7,.3,1),transform .9s cubic-bezier(.2,.7,.3,1);}
+.js-ready .reveal.in{opacity:1;transform:none;}
+@media (prefers-reduced-motion:reduce){
+  .reveal,.js-ready .reveal{opacity:1;transform:none;transition:none;}
+  .cover .bg{animation:none;transform:none;}
+  .scroll-cue i{animation:none;}
+}
+
+/* ---------------- 响应式 ---------------- */
+@media (max-width:1080px){
+  .nums.c4{grid-template-columns:repeat(2,1fr);}
+}
+@media (max-width:860px){
+  :root{--nav-h:52px;}
+  .nav{justify-content:center;padding:0 8px;overflow-x:auto;}
+  .nav a{font-size:12px;margin:0 9px;}
+  .nav::-webkit-scrollbar{display:none;}
+  .nums.c3{grid-template-columns:1fr;}
+  .mile{grid-template-columns:86px 1fr;gap:12px;}
+  .mile .y{font-size:17px;}
+  .cover .inner{margin-top:-8vh;}
+  .chapter{padding-top:48px;}
+}
+@media (max-width:560px){
+  .nums.c2,.nums.c4{grid-template-columns:1fr;}
+  .cover h1{letter-spacing:.04em;}
+}
+</style>
+<style id="__dm_no_drag_style__">* { -webkit-user-drag: none !important; }</style><style id="__dm_bindable_badge_style__">[data-sp-bindable="database"]{outline:1px dashed #0088ff;outline-offset:2px;border-radius:4px;}[data-sp-bindable="database"] *{pointer-events:none !important;transition:none !important;animation:none !important;}[data-sp-bindable="database"]{transition:none !important;animation:none !important;}</style></head>
+<body data-page-node-id="YlpsFI1zyWabpS8Tu0uTfd" style="">
+
+<!-- ========== 导航 ========== -->
+<nav class="nav solid" id="nav" data-page-node-id="zrBTnIjHBNhuAFXAGYVAk4">
+  <a href="#intro" data-page-node-id="L7yNSuwfKjPAdRyZKkNWnv" class="on">引言</a>
+  <a href="#c1" data-page-node-id="vJV5csyDSmZdUqMwKExmK4">空间布局</a>
+  <a href="#c2" data-page-node-id="jyuKyrjqag9DEqHEpI1nRF">十年成效</a>
+  <a href="#c3" data-page-node-id="NBTHDrEBmDmNA9TX1WG925">制度优势</a>
+  <a href="#c4" data-page-node-id="n4bbpdsl2IKZyLPVUBCGOc">互利机制</a>
+  <a href="#c5" data-page-node-id="fj6tuZ7If30RGzw6pTTbzx">全民共享</a>
+  <a href="#end" data-page-node-id="63TxnNMIcSMAyDD7fVE1XE">时代典范</a>
+</nav>
+
+<!-- ========== 封面 ========== -->
+<header class="cover" id="top" role="img" aria-label="同饮一河水 · 黄河流域九省协同记" data-page-node-id="A4z5GCkmQBZW6b6WywbipB">
+  <div class="bg" data-page-node-id="u6DwCBDaCwHGbBxaPEUibw"></div>
+  <div class="veil" data-page-node-id="qwQq5PVJDCdlQ7Hu6VsPvA"></div>
+  <div class="inner" data-page-node-id="WkdU185DzZ6fsUOHXGEBel">
+    <div class="gen" data-page-node-id="aeGTRWvDX8LKCZj6tZcCqS">一条黄河横贯九省，<br data-page-node-id="2uwD7TDwItsGWgW4dmFCrW">岁岁安澜的背后，<em data-page-node-id="PvKoTEuFWnwoa4V8Ba3Ogp">藏着怎样的治理密码</em>？</div>
+  </div>
+  <div class="scroll-cue" data-page-node-id="eFOQD9ue2jhONRzAiQJPKM"><span data-page-node-id="GwpBhCFztQgd0dsAAN2Qas">向下滚动</span><i data-page-node-id="VBwjo6bFNvz5ModZPGBKr3"></i></div>
+</header>
+
+<!-- ========== 引言 ========== -->
+<section class="intro" id="intro" data-page-node-id="4lK0uAjqgfjo7zl4MXTcnf">
+  <div class="wrap narrow" data-page-node-id="lwZvbhnq8EmacrgKsEEVzm">
+    <div class="lead reveal in" data-page-node-id="mJs7q1hD9hEBCXTgk0F2Fk">一条黄河横贯九省，奔流五千公里。<br data-page-node-id="t1sNxTaLONISALBhnrDVvD">岁岁安澜的背后，藏着怎样的治理密码？</div>
+    <div class="body reveal in" data-page-node-id="7ynejJH5OC76xMD8Z0ZGS5">
+      <p data-page-node-id="LPD1dPeK7kXP3zxEmZN1AY">黄河从青海发源，到山东入海，横穿九省区、跨越三级阶梯。上游守着水源，中游护着水土，下游看着河口——<strong data-page-node-id="qMpSz9l17dLdynELcbHCzl">同一条河，九省担的是不同的责任。</strong></p>
+      <p data-page-node-id="XidAYdLLYAUsSIQh2Wr8E0">过去常说的是“分段管”：各省守自己那一段。但一条河不会停在省界上，水往下走，账却算在各省自己头上。于是问题来了：<strong data-page-node-id="oGJMkuIt1jTrJ9h7mDmtxa">地貌迥异的九省区，怎么才能不各管一段？</strong></p>
+    </div>
+    <svg class="quote-mark reveal in" viewBox="0 0 40 40" fill="none" aria-hidden="true" data-page-node-id="KjsfGsKhpji1jk9gDkHVnQ"><path d="M4 22c0-8 5-14 13-16v6c-4 1.6-6 4.5-6 8h6v14H4V22zm20 0c0-8 5-14 13-16v6c-4 1.6-6 4.5-6 8h6v14H24V22z" fill="#C9962A"/></svg>
+    <div class="pull reveal">
+      <p>让黄河成为造福人民的幸福河。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ========== 第一章 · 空间布局 ========== -->
+<div class="band" style="background:0" data-page-node-id="mm1EvASLI0nuQ2mSr5frBw">
+  <div class="bg" style="background-image:url('assets/band-1.jpg')" data-page-node-id="5VpA8oRoPAH3yOI5zVCUxi"></div>
+  <div class="veil" data-page-node-id="ZUDG2p89IajdMCiPfhuw6Q"></div>
+  <div class="inner" data-page-node-id="xnxUCYEsjV6GXh8PQkEDke">
+    <div class="no reveal in" data-page-node-id="y0gJOzoIAzdfbAjdsQmTrX">第一章 · 空间布局</div>
+    <h2 class="reveal in" data-page-node-id="BWgLNvUmjyGcfHguTpzWOA">地貌迥异的九省区<br data-page-node-id="rtyGb0qbVeXXWHYEb2Kd4M">如何避免治理“一刀切”？</h2>
+    <div class="sub reveal in" data-page-node-id="UwjWi1fSjnb5s3HOcthZJR">精准布局：分段守护与协同补位</div>
+  </div>
+</div>
+
+<section class="chapter" id="c1" data-page-node-id="U5VbEADINXbNA9RBuy7Mzw">
+  <div class="wrap" data-page-node-id="GUlFMABDGJ1PJMtxfuGkV0">
+    <p class="gen reveal" data-page-node-id="qcXKKYPhL52Svj2EaNTzU1">治理不是简单的齐步走，而是精准的排兵布阵。先看清九省各自站在什么位置——</p>
+
+    <div class="figure wide card reveal" data-page-node-id="wNJZGqFZAQQOVCwT0T38XZ">
+      <div class="frame" data-page-node-id="UYd5jOMb9Wk5drkQrT5kBH">
+        <iframe src="assets/4屏地图.html" height="640" title="黄河沿线水文断面立体地形图" loading="lazy" data-page-node-id="lRQZrqOAAbFqUDVEHHNnCH" data-base-h="640" style="height: 640px;"></iframe>
+      </div>
+      <div class="figcap" data-page-node-id="mHpBCxf6dw69MBppzXMVEb"><b data-page-node-id="29DZGdDMFqHSY9j7B1FGxM">图 1</b>　黄河沿线关键水文断面点位分布（可拖动旋转、滚轮缩放、点击站点）</div>
+      <div class="src" data-page-node-id="Pxo9ed2Inh7PCqq0wrBc9J">水利部黄河水利委员会水文局公开站点信息；地形高程 SRTM，卫星影像 Esri World Imagery</div>
+    </div>
+
+    <div class="prose reveal" style="margin-top:clamp(38px,4.6vw,58px)" data-page-node-id="rFB9acEGLDfJCKJGDmNylb">
+      <p data-page-node-id="28pexthzhD7ld3UWIuKV4O">冲积平原、黄土高原、河口湿地，三种地貌对应三套治理逻辑。<strong data-page-node-id="EioTZulvCUd6irorkFFyap">上游筑牢水源屏障，中游稳固水土根基，下游守护河口生态。</strong></p>
+      <p data-page-node-id="zw6nis3Hv27LOiMUK1GElR">九省区立足大局，各司其职又协同补位。从青海“中华水塔”到库布其治沙奇迹，每一份坚守，都是对大河最深情的守护。</p>
+    </div>
+
+    <div class="nums c3 reveal" data-page-node-id="T331bGBRYpEMr27WJ6obiv">
+      <div class="num" data-page-node-id="uXnmDg8YSmz72Pdp3yjR66">
+        <div class="v" data-page-node-id="Tc7LWbeCjuV7vRbNeFxpeE">三级<small data-page-node-id="LKMBC1TbwWoWr2sLXoG4Sb">阶梯</small></div>
+        <div class="k" data-page-node-id="87aOABIv0vsvT3QJQx1tPb">跨越青藏高原、黄土高原、华北平原</div>
+        <div class="d" data-page-node-id="HeAlr7PArfvGpDdsXjqmvS">从海拔 4000 米以上的河源，一路降到不足 50 米的河口</div>
+        <div class="s" data-page-node-id="eQvamFYFcCCCqWLRfhLDx8">地形高程：SRTM 90m</div>
+      </div>
+      <div class="num" data-page-node-id="7PNidaAxBN2pYhpB4uGPnj">
+        <div class="v" data-page-node-id="ODBvRCHuVPJSgSEMcdg1ry">5464<small data-page-node-id="lZHShTgvT7PybJe6CHtYmq">公里</small></div>
+        <div class="k" data-page-node-id="Z558MYEOCsCrsLOG5LTMai">黄河干流全长</div>
+        <div class="d" data-page-node-id="eq29nuLDSKDA9qMVwlXcXt">流经 9 个省区，流域面积 79.5 万平方公里</div>
+        <div class="s" data-page-node-id="EUE3QlHVJXi8ZTEbKhW437">水利部黄河水利委员会《黄河的身世》</div>
+      </div>
+      <div class="num" data-page-node-id="6YmpZRKPHtdN77PhytDuaP">
+        <div class="v" data-page-node-id="GM6TFTTLueII21PVNKrXUO">15<small data-page-node-id="8t0mhO4jpJiaWxQFSMVUS4">处</small></div>
+        <div class="k" data-page-node-id="AmxNS82atXXaX30NzaVfYK">图中标注的关键水文断面</div>
+        <div class="d" data-page-node-id="XIz9jBKeF7dH4LlAIKc72c">从源头玛多黄河沿，到入海口利津</div>
+        <div class="s" data-page-node-id="fYO1bNh0CyjX7k4lbtkJBK">黄委水文局站点名录</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== 第二章 · 十年成效 ========== -->
+<div class="band" data-page-node-id="TGwGpor6UzGNhona7a3VAn">
+  <div class="bg" style="background-image:url('assets/band-2.jpg')" data-page-node-id="HwdXz8hhQ4twaknIBitUrG"></div>
+  <div class="veil" data-page-node-id="6Xp9sk4R6hyZE514dYUd20"></div>
+  <div class="inner" data-page-node-id="kvGslBwIL5OCOcaZPks9tC">
+    <div class="no reveal" data-page-node-id="uS5w7EujgvhJWtxuXSJH9d">第二章 · 十年成效</div>
+    <h2 class="reveal" data-page-node-id="YY2oBfQFwbJ3BoTN1yFAVX">十年久久为功<br data-page-node-id="VUBILU4rgjwvq173S5EBwj">母亲河迎来了怎样的蜕变？</h2>
+    <div class="sub reveal" data-page-node-id="TJinsEEDOO2vICGd3Mu5qb">历史跨越：全线提质与生态重生</div>
+  </div>
+</div>
+
+<section class="chapter" id="c2" data-page-node-id="X2wlIXDSQbyIfQ9pG44Ahl">
+  <div class="wrap" data-page-node-id="e0Bi41YBvo4gko9W8GtC48">
+    <p class="gen reveal" data-page-node-id="osAmHYA9H90E40bX0iMhz4">曾经的奔波治理，究竟结出了什么果？两组数据可以回答。</p>
+
+    <div class="figure reveal" data-page-node-id="Y75RcMfK6HQPXd9EnEHTpb">
+      <div class="frame" data-page-node-id="hCuOFQKpNgNrsmal7w4A1H">
+        <iframe src="assets/2屏.html?embed=1" height="640" title="黄河流域水土保持率变化趋势" loading="lazy" data-page-node-id="FNvkyrh76IHeiecACG6o3h" data-base-h="640" style="height: 640px;"></iframe>
+      </div>
+      <div class="figcap" data-page-node-id="BwyD2qSHEfFCIKRGKPNvrS"><b data-page-node-id="h71wm13ibe2BEK0to2B5E4">图 2</b>　黄河流域水土保持率变化趋势（2019—2025）</div>
+      <div class="src" data-page-node-id="fPFgsM66Hhi75kDLuK7xYp">黄河流域水土保持公报（2019—2025）</div>
+    </div>
+
+    <div class="prose reveal" style="margin-top:clamp(34px,4vw,52px)" data-page-node-id="Repsf7htpx0rzDgAtGZ9qe">
+      <p data-page-node-id="Y1FavcjRN7GL4NpkHK8wl8">2019 年的 66.75%，到 2025 年的 69.75%——<strong data-page-node-id="gWDEmYncoIMBGbkrsWaq8G">六年提升 3.00 个百分点。</strong></p>
+      <p data-page-node-id="wMYNsHoCOfHjPi0n11F8iq">这条线不是匀速上升的：<span class="hi" data-page-node-id="9UF89TkqEOUTYWUVxClBUW">2021 年后斜率明显变陡</span>，正是《黄河流域生态保护和高质量发展规划纲要》落地之后的几年。</p>
+    </div>
+
+    <div class="figure reveal" data-page-node-id="yjK2ZBsXEF35TevzILsKQI">
+      <div class="frame" data-page-node-id="n0Pk1S3TLFBRLzo0VALwlT">
+        <iframe src="assets/3屏.html?embed=1" height="640" title="黄河流域水土流失面积逐年收窄" loading="lazy" data-page-node-id="sMQvFsQO6OnklGT2m9YKdq" data-base-h="640" style="height: 640px;"></iframe>
+      </div>
+      <div class="figcap" data-page-node-id="LYI8LcWHDGCs8X9lFMp2ZC"><b data-page-node-id="d61chhm8rGm10yug9yl4PW">图 3</b>　黄河流域水土流失面积逐年收窄（2019—2025）</div>
+      <div class="src" data-page-node-id="9A0mU2NThb86OLC1TRuc5c">黄河流域水土保持公报（2019—2025）</div>
+    </div>
+
+    <div class="prose reveal" style="margin-top:clamp(34px,4vw,52px)" data-page-node-id="zuU0mKfIbWsmMEDXolYddL">
+      <p data-page-node-id="oCRc58o0Jnyx6Y6UDXQQ1q">另一头，水土流失面积从 26.42 万 km² 收窄到 24.04 万 km²，<strong data-page-node-id="m279K0B3GKtIyaUBQMKt10">七年少了 2.38 万 km²。</strong></p>
+      <p data-page-node-id="5q03BkYrSJXqibE8ppsDEL">而且减少的幅度在逐年加大——从 2020 年的一年 0.15 万 km²，到 2025 年的一年 0.54 万 km²，<span class="hi" data-page-node-id="MDrgDnQPrHI457nKUoODg2">年减幅扩大了 2.6 倍</span>。</p>
+    </div>
+
+    <div class="nums c3 reveal" data-page-node-id="aU6qj97vBNoCoFj4WoEOUL">
+      <div class="num" data-page-node-id="G4uztCQ4SK9qGE3EhtuNui">
+        <div class="v" data-page-node-id="0aXQbFQdboZoXw5gifFuoK">66.75<small data-page-node-id="i6taDhFHrmJaWOw392pHgg">%</small></div>
+        <div class="k" data-page-node-id="yrIAS6eCi5izOZsiyvTUcD">2019 年水土保持率</div>
+        <div class="d" data-page-node-id="oapRA1uiUGVBnzSrpLKZXd">起点值</div>
+        <div class="s" data-page-node-id="BF0wIurbhP0KEn4VxlVUWq">黄河流域水土保持公报</div>
+      </div>
+      <div class="num" data-page-node-id="UitZMICSonHVc1oO18Qnew">
+        <div class="v" data-page-node-id="4qee3BCGXwm0FUHhLbjzi7">69.75<small data-page-node-id="Ru16g1WXGYyvb7kAQtJdvP">%</small></div>
+        <div class="k" data-page-node-id="yMdGdpeKHQMhfjCJg6zzah">2025 年水土保持率</div>
+        <div class="d" data-page-node-id="kt3wF5NFhYPKqSlM3s1qEe">较 2019 年提升 3.00 个百分点</div>
+        <div class="s" data-page-node-id="152Vh5iVZpuz9HVFx6iMkA">黄河流域水土保持公报</div>
+      </div>
+      <div class="num" data-page-node-id="pyFWspbfTb1zUGuIX1Eqbx">
+        <div class="v" data-page-node-id="gMC3FINyxZ7s8gg7VZHAxL">2.38<small data-page-node-id="5zcYIB16n4OLYaYbKI0KW5">万 km²</small></div>
+        <div class="k" data-page-node-id="8yjF5qUGYzovlsSDUEPPJg">七年累计减少水土流失面积</div>
+        <div class="d" data-page-node-id="6A0eZVXFdci4fBvEw751Am">相当于 26.42 → 24.04 万 km² 的差值</div>
+        <div class="s" data-page-node-id="pfwWiHw3VSUPPcwN7LFJ4I">黄河流域水土保持公报</div>
+      </div>
+    </div>
+
+    <div class="ribbon reveal" data-page-node-id="gItcqI9kD9Bo7o84GDMvqT">从断流缺水到岁岁安澜，<b data-page-node-id="D9fHdXNBVv15m3pQYncmKL">这不仅是数据的刷新，更是生态面貌的重生。</b></div>
+  </div>
+</section>
+
+<!-- ========== 第三章 · 制度优势 ========== -->
+<div class="band" data-page-node-id="L3OMt5XO7bmHsWGeTHp2p5">
+  <div class="bg" style="background-image:url('assets/band-3.jpg')" data-page-node-id="Bx6uFfpJY1W19LUVKTK5qB"></div>
+  <div class="veil" data-page-node-id="KFCBwgkrKmE9BSGDnHcgU2"></div>
+  <div class="inner" data-page-node-id="HFmmB1f9JY0DP5buFPifMS">
+    <div class="no reveal" data-page-node-id="XqPLDREwMLM5nt2xegQSh6">第三章 · 制度优势</div>
+    <h2 class="reveal" data-page-node-id="mzwNce3iiEI9e0uuRFnBc5">如何让九省区步调一致<br data-page-node-id="F0LzcPS5DL7kPiLGuA3mzt">从“分段管”走向“全域治”？</h2>
+    <div class="sub reveal" data-page-node-id="3IFhFAH5XYDvHZpvFhxsmZ">一体统筹：制度聚力与全域联动</div>
+  </div>
+</div>
+
+<section class="chapter" id="c3" data-page-node-id="eFs8XEgxmSFOpkcQekcaT5">
+  <div class="wrap" data-page-node-id="4Lg7kgboGn7Yt4t7gSVzoQ">
+    <p class="gen reveal" data-page-node-id="KAQoyVrEM9Y2Ux4DFllsei">关键在于制度的力量。六年六步，黄河治理从“国家战略”走向“制度闭环”。</p>
+
+    <div class="figure wide card reveal" data-page-node-id="TIwk4MoSoP2cY6Kgwo4Z0T">
+      <div class="frame" data-page-node-id="kBUEqCEKBPHmtVKgL5Grv5">
+        <iframe src="assets/4屏里程碑.html?embed=1" height="520" title="黄河流域生态治理制度里程碑" loading="lazy" data-page-node-id="UDYnVhMh9s7sNON0yL9wXC" data-base-h="520" style="height: 520px;"></iframe>
+      </div>
+      <div class="figcap" data-page-node-id="mabB7dsAEjb7axNWCPjsDt"><b data-page-node-id="PPQbxwQZhKuxOgnLg3SgJv">图 4</b>　黄河流域生态治理制度里程碑（2019—2025）</div>
+      <div class="src" data-page-node-id="gx4LizbgCeD13kuj4ul72R">新华社、中国政府网、全国人大网、生态环境部公开发布文件</div>
+    </div>
+
+    <div class="miles reveal" data-page-node-id="NL7zZxjWHAw8IEw9mH32nH">
+      <div class="mile" data-page-node-id="fj6SCSnAkqqBwQXoFwZMH7">
+        <div class="y" data-page-node-id="AJZwxUBtospzeFp8yXeiIt">2019.9</div>
+        <div data-page-node-id="Lzrm2htbveByoDcw6tGd5a"><div class="t" data-page-node-id="k2Rht1yytXqCDMG6dt6dhr">上升为重大国家战略</div>
+        <div class="x" data-page-node-id="78e4gPymvBCk5PGqmKQeZU">黄河流域生态保护和高质量发展座谈会在河南郑州召开。</div></div>
+      </div>
+      <div class="mile" data-page-node-id="zzRNrViH7vUnFYU9jxtjPt">
+        <div class="y" data-page-node-id="UtXXTjZqKfqK6f1m99OTEX">2021.10</div>
+        <div data-page-node-id="M44PGvgSjWGGSXAVpggEMx"><div class="t" data-page-node-id="ibKsLwk7qRadGIxkMPvgG2">规划纲要印发</div>
+        <div class="x" data-page-node-id="oWH1FJcIAYsNyZKO8x0IrB">中共中央、国务院印发《黄河流域生态保护和高质量发展规划纲要》。</div></div>
+      </div>
+      <div class="mile" data-page-node-id="ay1iyEunIU6PaQB9X5cMMX">
+        <div class="y" data-page-node-id="0HsgYbhlDCIXRGS8ylaMLg">2023.4</div>
+        <div data-page-node-id="1HTGedtHTysNSu3GG2Oudb"><div class="t" data-page-node-id="pV7F8hKG7TIxUHBZD3tLHz">黄河保护法施行</div>
+        <div class="x" data-page-node-id="qOc3cL0DAV03lwX9WseazN">我国第二部流域专门法律，以法律形式确立生态保护补偿制度。</div></div>
+      </div>
+      <div class="mile" data-page-node-id="dnh2DmZOJIQ9OokEfagA2P">
+        <div class="y" data-page-node-id="kxCCvpLMJChcYGjJYB1lFE">2025.5</div>
+        <div data-page-node-id="Z1E1HrQhUOhY7ZEzAHapzx"><div class="t" data-page-node-id="8tVlqZ37tC4xb8jJT38SCc">横向补偿机制健全</div>
+        <div class="x" data-page-node-id="hGc8n64JFidGHE94ds5nRY">五部门出台健全横向生态保护补偿机制意见，干流及重要支流全覆盖。</div></div>
+      </div>
+      <div class="mile" data-page-node-id="3h51wdanRrwBkUoAqKBbcJ">
+        <div class="y" data-page-node-id="CtW2yX2c5lMn9xoCpVnxfd">2025.9</div>
+        <div data-page-node-id="fBaLv32ceDuBmeYXgmE4uk"><div class="t" data-page-node-id="edbSv444H4Ti2cL4jVm8de">干流补偿全域贯通</div>
+        <div class="x" data-page-node-id="Jzh2fzyryLaCcChmwY9EAC">豫晋陕签署协议，沿黄省份累计签订 9 份跨省协议。</div></div>
+      </div>
+    </div>
+
+    <div class="prose reveal" style="margin-top:clamp(34px,4vw,52px)" data-page-node-id="JxiDrxgQfU2xF0TScyGCVW">
+      <p data-page-node-id="WXiLt6FGRdyRW0AhSpWenO"><strong data-page-node-id="ZVa1QgFGi4otN02tBUGQKQ">前两步定框架，第三步给法律，最后两步把“补偿”落实到省与省之间。</strong></p>
+      <p data-page-node-id="A75yIsHYf1Zpw8tDwRmr4U">跨省联合监测、协同巡护全面铺开，全流域上下同欲，绘就了护河新格局。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ========== 第四章 · 互利机制 ========== -->
+<div class="band" data-page-node-id="3JA0cCwgimnTtQwOKasu5C">
+  <div class="bg" style="background-image:url('assets/band-4.jpg')" data-page-node-id="95IK0X5Wl1JKWxbeuqtZBe"></div>
+  <div class="veil" data-page-node-id="7EDaTM2bnJS6N4bCEWzZ0k"></div>
+  <div class="inner" data-page-node-id="hMfFOlcAhtpsnoCtpfvsJF">
+    <div class="no reveal" data-page-node-id="2frWXvPrMcAwXfWZJ3aIEI">第四章 · 互利机制</div>
+    <h2 class="reveal" data-page-node-id="MqoDMa52uTNyfeQO2tMtHF">上游的默默守护<br data-page-node-id="VCqPBLtP6r0yUh8BPa7Y3y">如何获得长久的动力与回馈？</h2>
+    <div class="sub reveal" data-page-node-id="QOI52iOPABho8kecWXPHbW">互利共护：双向赋能与制度保障</div>
+  </div>
+</div>
+
+<section class="chapter" id="c4" data-page-node-id="AV5FDxB1S6IYJK64DnfuUX">
+  <div class="wrap" data-page-node-id="5qcD4aiUiR6E5WmqBBmNxr">
+    <p class="gen reveal" data-page-node-id="O7jC8YFo4rMwKdZ6JPOy05">守护有担当，奉献必有回响。先看钱的流向——一条是中央往下拨，一条是下游往上补。</p>
+
+    <div class="figure wide card reveal" data-page-node-id="tf5yQPcgC3YdoUPTiaOCpB">
+      <div class="frame" data-page-node-id="b8lA80SBGtGE6FTFE5WoYS">
+        <iframe src="assets/5屏.html?embed=1" height="720" title="流域生态资金双向流动图谱" loading="lazy" data-page-node-id="j8sZHTTyxCfklp8q9dtBl6" data-base-h="720" style="height: 720px;"></iframe>
+      </div>
+      <div class="figcap" data-page-node-id="8hSiFKUGPCDrD7JmwRkeQn"><b data-page-node-id="9PoIZHxjQlCqoI28KgbYoI">图 5</b>　流域生态资金双向流动图谱（悬停省份或协议节点，查看原文引用）</div>
+      <div class="src" data-page-node-id="xXyK2VggHn15rBkH6mGRTD">财政部预算司《2024 年重点生态功能区转移支付明细表》；生态环境部、人民日报海外版及沿黄各省区人民政府公开信息</div>
+    </div>
+
+    <div class="tipbar reveal" data-page-node-id="ZQdAwJnjcCRhB424izgzHo">
+      <span data-page-node-id="3zHcCe91dtc5lPYk3rHcD9">金色 = 中央纵向转移支付</span>
+      <span data-page-node-id="KVI3g7E76EnuqiiB3g363Y">绿色 = 省际横向生态补偿</span>
+      <span data-page-node-id="6AcWh7l1jBneQHzUEtiRh5">悬停查看各省原文出处</span>
+    </div>
+
+    <div class="prose reveal" style="margin-top:clamp(34px,4vw,52px)" data-page-node-id="bwtx6IIMCfKTvJnizEzV38">
+      <p data-page-node-id="z96e0jB6DdBUbjLPrTjdNF"><strong data-page-node-id="jHvkPET6MAUoW7Vyaw8hmC">金色是纵向：</strong>中央财政向沿黄九省拨款 <span class="hi" data-page-node-id="6eXqqGg8xjml35fn4hxlNe">404.24 亿元</span>（2024 年决算数），甘肃以 90.37 亿元居首。</p>
+      <p data-page-node-id="4Ri8pj0BZAzekb4mFSV8NI"><strong data-page-node-id="IHX79F3vbn3vq9F8rfA9bm">绿色是横向：</strong>省的这一头补那一头——豫鲁协议累计兑现 2.5 亿元，甘青 2000 万元，川甘共设 1 亿元资金池，甘宁则因断面达标互不补偿。</p>
+    </div>
+
+    <div class="nums c4 reveal" data-page-node-id="2r0MpU2v8XddNGkCqjZsBn">
+      <div class="num" data-page-node-id="y1X4Bb0kynkRd1xiQuQoAd">
+        <div class="v" data-page-node-id="XN17I0xkZ35m7FLjNcjMk2">404.24<small data-page-node-id="HS5wXq0RZAgErKQLTmKVa5">亿元</small></div>
+        <div class="k" data-page-node-id="IQY3FiQhvRlhoib0r4FCzo">九省重点生态功能区转移支付</div>
+        <div class="d" data-page-node-id="KdQi7o4mznLJRSt2nPsM4b">2024 年决算数，九省精确加总</div>
+        <div class="s" data-page-node-id="BHRZJcwVrYYtUV4dSBVBHz">财政部预算司明细表</div>
+      </div>
+      <div class="num" data-page-node-id="xPsY1EPwBqVlU1u4jCMVHY">
+        <div class="v" data-page-node-id="06ETn1b6Cxv5b9HKewmIRH">2.5<small data-page-node-id="1Q54LOzFpOo0bzLGwy8rzW">亿元</small></div>
+        <div class="k" data-page-node-id="L0pm2EdwuMMChhAaIzypDl">豫鲁横向补偿累计兑现</div>
+        <div class="d" data-page-node-id="y3W4kTNVL2g8yFskabivDS">2021.4 签署，黄河流域首个跨省补偿协议</div>
+        <div class="s" data-page-node-id="vJ0XSI0A9S8z5FEYpvv1VV">人民日报海外版 2025.7.15</div>
+      </div>
+      <div class="num" data-page-node-id="cB6u0ER5BNPKsqnBoPbrc1">
+        <div class="v" data-page-node-id="tQOgBKeGcfqeTaXzPtOTly">1205<small data-page-node-id="cON8CXIkFAzPNcycU7Dwnj">亿元</small></div>
+        <div class="k" data-page-node-id="JZY5tf3KmKaqOzHXEB8ccp">2025 年全国重点生态功能区转移支付预算</div>
+        <div class="d" data-page-node-id="zZaghOgk5uyER0WDL0F3hM">同比增长 7.5%</div>
+        <div class="s" data-page-node-id="xBT1bFiolMvhKQ6LJCNkEx">财政部预算司</div>
+      </div>
+      <div class="num" data-page-node-id="57ON4n2KgyGAG51U1GZwst">
+        <div class="v" data-page-node-id="08dsPBQ20SCkpZGkFTX3uu">33<small data-page-node-id="OKIMQFxF1hHEx6klKrBSeW">个</small></div>
+        <div class="k" data-page-node-id="23lZ4L6EAKFTvbGKS4MdMU">全国地方层面跨省流域补偿机制</div>
+        <div class="d" data-page-node-id="5C0GEt5NnuR6ijkKtAMdVX">长江、黄河干流已建立中央层面统一补偿机制</div>
+        <div class="s" data-page-node-id="GxH6zyBPToY384Wucx43OU">2025 年中央决算报告</div>
+      </div>
+    </div>
+
+    <div class="ribbon reveal" data-page-node-id="efQfVGm8ps59QUiTv1ne82"><b data-page-node-id="yAiKB4bU7po3RTbuZqzqY0">让“守护大河”不仅是责任，更是绿色事业。</b>每一份生态坚守都被看见、被认可、被回馈。</div>
+  </div>
+</section>
+
+<!-- ========== 第五章 · 全民共享 ========== -->
+<div class="band" data-page-node-id="jRtC960WATM0q5R1yg7NGl">
+  <div class="bg" style="background-image:url('assets/band-5.jpg')" data-page-node-id="qn99qIsAv1xG70Ut1cqdn7"></div>
+  <div class="veil" data-page-node-id="xPd2ATyARIHPUwKBAgCtEH"></div>
+  <div class="inner" data-page-node-id="WjAAoItfVpJiTAXn9bsC1A">
+    <div class="no reveal" data-page-node-id="N1CS3ar4cTCfzQQMvbGvE0">第五章 · 全民共享</div>
+    <h2 class="reveal" data-page-node-id="KZ63dnbzIGwf9PtkOKl0fD">大河安澜之后<br data-page-node-id="1V6SMRlfztknDfPLSNATuL">沿黄百姓收获了怎样的幸福？</h2>
+    <div class="sub reveal" data-page-node-id="K2JsUUlwJCBWITX71hCFV4">成果共享：生态红利与普惠万民</div>
+  </div>
+</div>
+
+<section class="chapter" id="c5" data-page-node-id="G5dJFw4uFAfJwf9gLRO9Jl">
+  <div class="wrap" data-page-node-id="RcDOz4oEyKaLKqjplwBd6h">
+    <p class="gen reveal" data-page-node-id="C4nRBmEHQksV2KRpkOBKc8">治理成效最终要落到人身上。三个数字，从鸟、到地、到人。</p>
+
+    <div class="figure wide card reveal" data-page-node-id="ZySO03MhnhDCZZt5QpiopD">
+      <div class="frame" data-page-node-id="5uuD3MkEidRGndL4zmX78A">
+        <iframe src="assets/6屏.html?embed=1" height="1060" title="黄河流域协同治理图谱" loading="lazy" data-page-node-id="DwkrDmfuznoeHCXPiZ6evj" data-base-h="1060" style="height: 1060px;"></iframe>
+      </div>
+      <div class="figcap" data-page-node-id="KaRJdsJivqpRshxb3Es7R2"><b data-page-node-id="UBEOu0G1cRu7zIn5gpJD9Z">图 6</b>　黄河流域协同治理图谱（点击地图省份查看成果详情）</div>
+      <div class="src" data-page-node-id="Y5tQWAPYjk4coBY8qAt65I">山东黄河三角洲国家级自然保护区、河南省与山东省人民政府公开信息、新华社</div>
+    </div>
+
+    <div class="nums c3 reveal" data-page-node-id="JXLJkoLGqEJp9gAxYaAKeM">
+      <div class="num" data-page-node-id="drjj7smmZ0y596QFt6NGZ0">
+        <div class="v" data-page-node-id="h9x0RXRKlUL0G6HOz35OR2">373<small data-page-node-id="iWjBaBSfrOO6OmeJROdmjA">种</small></div>
+        <div class="k" data-page-node-id="2w578YtX2OQaikDRAevAJb">黄河三角洲鸟类种类</div>
+        <div class="d" data-page-node-id="Iw1AnZ3uykxkFrOQqLpCGe">从建区初期的 187 种增至 2024 年的 373 种，增加了 186 种</div>
+        <div class="s" data-page-node-id="byMdCwkoq6PyfjApIR5S1W">山东黄河三角洲国家级自然保护区</div>
+      </div>
+      <div class="num" data-page-node-id="ssFSXmN3mkwizeZ1UEAbm6">
+        <div class="v" data-page-node-id="KI6UjzJv4SngUNOwBj3iSi">188<small data-page-node-id="mL4V4QXbjMK6xtnyTQdsgV">km²</small></div>
+        <div class="k" data-page-node-id="EbwFHLfxVAgjksnVDv1RHS">黄河口湿地修复面积</div>
+        <div class="d" data-page-node-id="7DZkxRiwkblGRq46eU67A1">黄河口候鸟栖息地已列入《世界遗产名录》</div>
+        <div class="s" data-page-node-id="n5XyHLAyOeKT3hxqyBfm9j">同上</div>
+      </div>
+      <div class="num" data-page-node-id="rNY1T4gK4U81cGS1E6jM5L">
+        <div class="v" data-page-node-id="Bw9oNIHQMu8Roaxtgt95UG">90<small data-page-node-id="wDUGM66WjeVU98GP2TXuyN">万人</small></div>
+        <div class="k" data-page-node-id="zifBoHmBFNAKnX8OZJJe8N">豫鲁两省滩区迁建安置人口</div>
+        <div class="d" data-page-node-id="2TlEyYHYLT0TX6jzQ6TyTt">河南 30 万 + 山东 60 万，两省各自口径相加</div>
+        <div class="s" data-page-node-id="pUqlAMWT917BWCwuPRCLHK">2022年河南省政府工作报告、新华社2022年6月报道</div>
+      </div>
+    </div>
+
+    <div class="prose reveal" style="margin-top:clamp(34px,4vw,52px)" data-page-node-id="SeFWGBeeOvBMymU4oBL9B9">
+      <p data-page-node-id="LKhIKLZG2pDQJofb8vwfy8">生态红利全域共享，绿水青山普惠万民。水清岸绿带动了绿色产业崛起与文旅兴旺。湿地修复，鸟类回归，滩区群众安居乐业。</p>
+      <p data-page-node-id="W3BzmpFRQrWkgz4lnu49EI"><strong data-page-node-id="FSI8orYL4KFeBXpaBgfHjH">一河青绿，不仅美了环境，更富了口袋。</strong>这是九省同心治理留给人民最珍贵的礼物。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ========== 终章 ========== -->
+<section class="finale" id="end" data-page-node-id="TlTbWREXEP6JfndVuBB6Po">
+  <div class="bg" data-page-node-id="h34C3AQGsNTAbE9SQ9ITqp"></div>
+  <div class="veil" data-page-node-id="mpgjC6SBLwoYiyAFqPQVqo"></div>
+  <div class="inner wrap narrow" data-page-node-id="aClLgAwz52jBQFcsvb4aFB">
+    <div class="no reveal" data-page-node-id="W239tSuhBkJrNySFbOIjFH">终章 · 时代典范</div>
+    <h2 class="reveal" data-page-node-id="Ysbt3TNqWDlVzB8Eti8BCT">从分段守护到全域共治<br data-page-node-id="XZXUEzLilQHgkWtPGBjvyh">九省同心续写新篇章</h2>
+    <div class="epi reveal" data-page-node-id="gMh4NDboblV1dRcmiFJuLH">
+      <p data-page-node-id="6UIC5lXBHiiGK3dcttrS12">九曲黄河的重生，是中国式流域治理的典范。</p>
+      <p data-page-node-id="3gddSfQDeIs6syj1QMWsdd">未来，九省区将继续同向发力。</p>
+      <p data-page-node-id="s27fyOkD8HscbTWO08UZS6">守护大河安澜，续写幸福黄河新篇章。</p>
+    </div>
+    <div class="seal" data-page-node-id="XvKYSF7GKdUgSrRAdZZsCM"></div>
+  </div>
+</section>
+
+<!-- ========== 落款 ========== -->
+<footer class="credit" data-page-node-id="knTsW2kTRJimz195rTUqQg">
+  <div class="wrap" data-page-node-id="1o7KboJzalzzIB3NXCkDp6">
+    <div class="h" data-page-node-id="ZN4pdBbaDgyLFpyjNI83Xm">数据来源</div>
+    <p data-page-node-id="C2XMAFXVOZxPROVKxsioDJ">财政部预算司《2024 年重点生态功能区转移支付明细表》、2025 年中央决算报告；生态环境部；水利部黄河水利委员会；国家发展和改革委员会；黄河流域水土保持公报（2019—2025）；新华社；人民日报海外版；山东黄河三角洲国家级自然保护区；沿黄九省区人民政府公开信息。</p>
+    <div class="meta" data-page-node-id="fZ9twickaiYDEDmAZBB1ze">
+      <span data-page-node-id="RziMDKmRZji783Xv3mSsHW">本作为数据新闻课程设计作品</span>
+      <span data-page-node-id="q2jDDWF465W9Dqwuhkb7Ub">同饮一河水 · 黄河流域九省协同记</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ---------- iframe 高度自适应 ----------
+   6 个子可视化页面各有自己的画幅比例，写死高度在不同屏宽下都会出问题：
+   宽屏时字太小 / 上下留白，窄屏时内容被裁。这里统一按"容器宽度 × 比例"算高度。
+
+   比例系数来自各子页在嵌入模式下的实测内容高/宽比：
+     4屏地图   —— 地形图本身 16:9，再加 HUD/比例尺浮层 → 0.64
+     2屏 折线  —— 标题+图例+坐标轴 → 0.64
+     3屏 漏斗  —— 标题+七层漏斗 → 0.64
+     4屏里程碑 —— 395 高 / 1098 宽 → 0.37（河道宽扁，节点文字在上下两侧伸出）
+     5屏 图谱  —— 720 高 / 长文案 → 0.66
+     6屏 国风  —— 左图右文分栏 → 0.79
+   每个 iframe 用 data-ratio 标注，data-minh 给窄屏兜底最小高度。 */
+(function(){
+  /* 宽屏（iframe ≥ 1000px）走比例算法；窄屏时子页会切成上下堆叠/竖排列表，
+     内容高度不再与宽度成正比，改用下限值给足空间 */
+  var MAP = {
+    '黄河沿线水文断面立体地形图': { ratio: 0.64, min: 420, narrow: 520 },
+    '黄河流域水土保持率变化趋势':   { ratio: 0.64, min: 420, narrow: 520 },
+    '黄河流域水土流失面积逐年收窄': { ratio: 0.64, min: 420, narrow: 520 },
+    '黄河流域生态治理制度里程碑':   { ratio: 0.37, min: 380, narrow: 560 },
+    '流域生态资金双向流动图谱':     { ratio: 0.70, min: 620, narrow: 1140 },
+    '黄河流域协同治理图谱':         { ratio: 0.79, min: 640, narrow: 1140 }
+  };
+
+  function fit(){
+    [].forEach.call(document.querySelectorAll('.figure iframe'), function(f){
+      var cfg = MAP[f.title] || { ratio: 0.6, min: 460, narrow: 900 };
+      var w = f.clientWidth || f.parentNode.clientWidth;
+      if (!w) return;
+      var h;
+      if (w < 1000){
+        // 窄屏：子页切竖排/堆叠，用实测所需高度；超窄再少量追加
+        h = cfg.narrow + (w < 700 ? 60 : 0);
+      } else {
+        h = Math.max(Math.round(w * cfg.ratio), cfg.min);
+      }
+      if (Math.abs(f.clientHeight - h) > 6){
+        f.style.height = h + 'px';
+        f.setAttribute('height', h);
+      }
+    });
+  }
+
+  fit();
+  window.addEventListener('resize', fit);
+  window.addEventListener('load', fit);
+  setTimeout(fit, 500);
+  setTimeout(fit, 1500);
+  setTimeout(fit, 3000);
+})();
+
+/* ---------- 导航：滚动变实底 + 当前章节高亮 ---------- */
+(function(){
+  var nav = document.getElementById('nav');
+  var links = [].slice.call(nav.querySelectorAll('a'));
+  var targets = links.map(function(a){ return document.querySelector(a.getAttribute('href')); });
+
+  function onScroll(){
+    var y = window.scrollY || document.documentElement.scrollTop;
+    nav.classList.toggle('solid', y > window.innerHeight * 0.72);
+
+    var cur = -1;
+    for (var i = 0; i < targets.length; i++){
+      if (targets[i] && targets[i].getBoundingClientRect().top <= 140) cur = i;
+    }
+    links.forEach(function(a, i){ a.classList.toggle('on', i === cur); });
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+})();
+
+/* ---------- 进场动画 ----------
+   只有 JS 真正接管时才让元素从 opacity:0 开始（html.js-ready）；
+   另外若 IO 的回调迟迟没来（长页整页截图、无头浏览器、滚动过快），
+   2.5 秒后兜底把所有元素置为可见，避免内容永远停在透明状态。 */
+(function(){
+  var els = [].slice.call(document.querySelectorAll('.reveal'));
+  var revealAll = function(){ els.forEach(function(e){ e.classList.add('in'); }); };
+  document.documentElement.classList.add('js-ready');
+  if (!('IntersectionObserver' in window)) { revealAll(); return; }
+
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if (en.isIntersecting){
+        en.target.classList.add('in');
+        io.unobserve(en.target);
+      }
+    });
+  }, { threshold: 0.01, rootMargin: '0px 0px 0px 0px' });
+  els.forEach(function(e){ io.observe(e); });
+
+  // 兜底一：可见区之外但已经滚过去的元素，直接放行
+  var sweep = function(){
+    var vh = window.innerHeight;
+    els.forEach(function(e){
+      if (e.classList.contains('in')) return;
+      var r = e.getBoundingClientRect();
+      if (r.top < vh * 1.2) e.classList.add('in');
+    });
+  };
+  window.addEventListener('scroll', sweep, { passive: true });
+  window.addEventListener('resize', sweep);
+
+  // 兜底二：8 秒后无论是否被观察到，全部显示（防止任何环境下的空白）
+  setTimeout(revealAll, 3500);
+})();
+
+/* ---------- iframe 高度自适应（旧的固定高度逻辑，已由上方按比例逻辑替代） ---------- */
+(function(){
+  /* 兜底：仅在 JS 未执行比例逻辑时生效，正常不会走到 */
+})();
+</script>
+
+
+</body></html>

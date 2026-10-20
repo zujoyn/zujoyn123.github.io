@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <title>黄河流域水土流失面积逐年收窄（2019-2025）</title>
+  <script src="echarts.min.js"></script>
+  <script>if(typeof echarts==="undefined"){document.write('<script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"><\/script>');}</script>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: "Noto Sans SC","PingFang SC","Microsoft YaHei",sans-serif;
+      background: #FDFBEF;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 8px 0 4px;
+    }
+    #main { width: 100%; max-width: 1000px; height: 620px; }
+    .footer { color: #9A988C; font-size: 12px; text-align: center; line-height: 1.7; padding: 0 16px; }
+    @media (max-width:900px){ #main{height:480px;} .footer{font-size:11px;} }
+    /* 被父页面 iframe 嵌入时：隐藏内部页脚（来源小字由父页面统一给出） */
+    body.embed .footer { display: none; }
+    /* 嵌入模式：图表高度交给父页面按容器高度铺满（父页面已按 0.62 宽高比预留） */
+    body.embed { padding: 0; }
+    body.embed #main { height: 100vh; max-width: none; }
+  
+    /* 嵌入模式：图表容器顶到边框，去掉上下内边距避免底部被裁 */
+    body.embed{padding:0 !important;}
+    body.embed #main{padding:0 !important;margin:0 !important;}
+  </style>
+</head>
+<body>
+  <div id="main"></div>
+  <div class="footer">数据来源：黄河流域水土保持公报（2019—2025）｜ 单位：万 km²</div>
+
+<script>
+var chartDom = document.getElementById('main');
+var myChart = echarts.init(chartDom);
+
+var C = {
+  ink:'#2B2B26', ink2:'#6B6A60', ink3:'#9A988C',
+  gold:'#B98A2B', goldL:'#E3B85C', line:'#E4E0D4'
+};
+
+var raw = [
+  { year: 2019, area: 26.42, delta: null },
+  { year: 2020, area: 26.27, delta: 0.15 },
+  { year: 2021, area: 25.93, delta: 0.34 },
+  { year: 2022, area: 25.55, delta: 0.38 },
+  { year: 2023, area: 25.11, delta: 0.44 },
+  { year: 2024, area: 24.58, delta: 0.53 },
+  { year: 2025, area: 24.04, delta: 0.54 }
+];
+
+// 暖色梯度：最浅(最上面2019) → 最深(最下面2025)
+var palette = ['#F6E4B8', '#EFD79E', '#E7C885', '#DEB86B', '#D2A653', '#C49338', '#B98222'];
+
+var funnelData = raw.map(function(item, idx) {
+  return {
+    value: item.area,
+    name: item.year + '年',
+    itemStyle: { color: palette[idx] }
+  };
+});
+
+var option = {
+  backgroundColor: 'transparent',
+  textStyle: { fontFamily: 'Noto Sans SC, PingFang SC, Microsoft YaHei' },
+  title: {
+    text: '黄河流域水土流失面积逐年收窄',
+    subtext: '2019 — 2025｜单位：万 km²',
+    left: 'center',
+    top: 4,
+    textStyle: { color: C.ink, fontSize: 19, fontWeight: 800 },
+    subtextStyle: { color: C.ink3, fontSize: 12 }
+  },
+  tooltip: {
+    trigger: 'item',
+    backgroundColor: '#fff',
+    borderColor: C.line,
+    borderWidth: 1,
+    padding: [8, 12],
+    textStyle: { color: C.ink, fontSize: 12.5 },
+    extraCssText: 'box-shadow:0 6px 20px rgba(43,43,38,.12);border-radius:8px;',
+    formatter: function(p) {
+      var d = raw[p.dataIndex];
+      var html = '<b>' + d.year + ' 年</b><br/>水土流失面积：<b style="color:' + C.gold + '">' + d.area.toFixed(2) + ' 万 km²</b>';
+      if (d.delta) html += '<br/>较上一年减少：' + d.delta.toFixed(2) + ' 万 km²';
+      return html;
+    }
+  },
+  series: [
+    {
+      name: '水土流失面积',
+      type: 'funnel',
+      left: '8%',
+      top: 78,
+      bottom: 46,
+      width: '84%',
+      min: 23.8,
+      max: 26.5,
+      minSize: '24%',
+      maxSize: '100%',
+      sort: 'descending',
+      gap: 6,
+      itemStyle: { borderColor: '#FDFBEF', borderWidth: 3, borderRadius: 4 },
+      label: {
+        show: true,
+        position: 'inside',
+        color: '#3A3227',
+        fontWeight: 700,
+        fontSize: 13.5,
+        formatter: function(p) {
+          var d = raw[p.dataIndex];
+          if (d.delta) {
+            return d.year + '年   ' + d.area.toFixed(2) + ' 万km²   ( ↓' + d.delta.toFixed(2) + ' )';
+          }
+          return d.year + '年   ' + d.area.toFixed(2) + ' 万km²';
+        }
+      },
+      labelLine: { show: false },
+      emphasis: {
+        label: { fontSize: 15.5, color: '#2B2B26' },
+        itemStyle: { shadowBlur: 16, shadowColor: 'rgba(185,138,43,.35)' }
+      },
+      data: funnelData
+    }
+  ]
+};
+
+myChart.setOption(option);
+function safeResize(){
+      var el = document.getElementById('main');
+      if(!el || el.clientWidth < 2 || el.clientHeight < 2) return;
+      myChart.resize();
+    }
+    window.addEventListener('resize', safeResize);
+    if(window.ResizeObserver){ new ResizeObserver(safeResize).observe(document.getElementById('main')); }
+</script>
+<script>if(/[?&]embed=1/.test(location.search)){ document.body.classList.add('embed'); }</script>
+</body>
+</html>

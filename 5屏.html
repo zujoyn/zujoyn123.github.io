@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-page-node-id="HXEFM0LGpfJVkis8TG9e3U">
+<head data-page-node-id="64DmYCCuENoa8sxLw3sHhi">
+<meta charset="UTF-8" data-page-node-id="boKtPofVpp2dXZjhKJujyi">
+<meta name="viewport" content="width=device-width, initial-scale=1.0" data-page-node-id="rEZRyeEp8LPkNCbzZ8a66f">
+<title>同饮一河水 · 第五章｜互利共护：资金双向流动图谱</title>
+<style>
+  :root{
+    --paper:#FBFAF6; --ink:#2B2B26; --ink2:#6B6A60; --ink3:#9A988C;
+    --gold:#B98A2B; --gold-l:#E3B85C; --green:#2E8B6E; --green-l:#5FC49E;
+    --line:#E4E0D4; --card:#FFFFFF;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html,body{height:100%;}
+  body{
+    background:var(--paper); color:var(--ink);
+    font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Source Han Sans SC",sans-serif;
+    overflow:hidden;
+  }
+  .wrap{display:flex;height:100vh;width:100vw;}
+
+  /* ---------- 图谱区 ---------- */
+  .mapbox{flex:1;position:relative;min-width:0;background:var(--paper);}
+  svg#map{width:100%;height:100%;display:block;}
+  .pnode{cursor:pointer;}
+  .pnode circle.dot{fill:#fff;stroke:var(--gold);stroke-width:2.6;transition:.18s;}
+  .pnode:hover circle.dot{fill:var(--gold-l);}
+  .pnode circle.hit{fill:transparent;}
+  .pnode text{pointer-events:none;}
+  .pv{font-size:18px;font-weight:800;fill:var(--ink);}
+  .pa{font-size:12.5px;font-weight:700;fill:var(--gold);}
+  .pd{font-size:10.5px;font-weight:600;fill:var(--green);}
+  .deal{cursor:pointer;}
+  .deal circle.dn{fill:#EAF6F0;stroke:var(--green);stroke-width:2.4;transition:.18s;}
+  .deal:hover circle.dn{fill:#D6F0E4;}
+  .deal circle.hit{fill:transparent;}
+  .deal path.dline{fill:none;stroke:var(--green);stroke-linecap:round;opacity:.9;transition:.18s;}
+  .deal path.hit{fill:none;stroke:transparent;stroke-width:26;}
+  .deal:hover path.dline{opacity:1;stroke:var(--green-l);}
+  .dn1{font-size:14px;font-weight:800;fill:#1F6B54;}
+  .dn2{font-size:11.5px;font-weight:700;fill:var(--green);}
+  .fline{fill:none;stroke:var(--gold);stroke-linecap:round;opacity:.75;}
+  .glow{pointer-events:none;}
+  .gtitle{font-size:17px;font-weight:800;fill:var(--ink);letter-spacing:.01em;}
+  .gsub{font-size:12.5px;fill:var(--ink3);}
+  .cc1{font-size:19px;font-weight:800;fill:var(--ink);}
+  .cc2{font-size:12px;font-weight:600;fill:var(--gold);}
+
+  /* ---------- 右侧面板 ---------- */
+  .panel{
+    width:clamp(360px,26vw,430px);flex:none;height:100%;
+    background:#fff;border-left:1px solid var(--line);
+    padding:clamp(22px,2.4vh,38px) clamp(20px,2vw,34px);
+    display:flex;flex-direction:column;gap:clamp(12px,1.6vh,20px);
+    overflow-y:auto;
+  }
+  .chip{
+    align-self:flex-start;font-size:12px;font-weight:700;letter-spacing:.14em;
+    color:var(--gold);background:rgba(185,138,43,.10);
+    border:1px solid rgba(185,138,43,.28);border-radius:999px;padding:5px 14px;
+  }
+  .panel h2{font-size:clamp(21px,1.9vw,27px);line-height:1.4;font-weight:800;letter-spacing:-.01em;}
+  .panel .sub{font-size:13px;color:var(--ink2);line-height:1.7;}
+  .card{
+    background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:clamp(15px,1.8vh,22px);display:flex;flex-direction:column;gap:13px;
+    box-shadow:0 6px 22px rgba(43,43,38,.05);
+  }
+  .card .ctitle{font-size:15px;font-weight:800;display:flex;align-items:center;gap:8px;}
+  .card .ctitle .tag{font-size:11px;font-weight:700;padding:2px 8px;border-radius:6px;}
+  .tag.gold{color:var(--gold);background:rgba(185,138,43,.12);}
+  .tag.green{color:var(--green);background:rgba(46,139,110,.12);}
+  .numrow{display:flex;flex-direction:column;gap:2px;}
+  .numrow .n{font-size:30px;font-weight:800;font-variant-numeric:tabular-nums;letter-spacing:-.02em;}
+  .numrow .n small{font-size:15px;font-weight:700;margin-left:2px;}
+  .numrow .d{font-size:12.5px;color:var(--ink2);line-height:1.55;}
+  .numrow.gold .n{color:var(--gold);}
+  .numrow.green .n{color:var(--green);}
+  .divline{height:1px;background:var(--line);}
+  .kv{display:flex;flex-direction:column;gap:7px;font-size:13px;line-height:1.65;}
+  .kv .k{color:var(--ink3);font-size:12px;}
+  .kv .v{color:var(--ink);}
+  .kv ul{list-style:none;display:flex;flex-direction:column;gap:6px;}
+  .kv li{padding-left:16px;position:relative;color:var(--ink);font-size:13px;line-height:1.6;}
+  .kv li::before{content:"";position:absolute;left:2px;top:.62em;width:6px;height:6px;border-radius:50%;background:var(--green-l);}
+  .qblk{display:flex;flex-direction:column;gap:6px;}
+  .qblk .qh{color:var(--ink3);font-size:12px;}
+  .qblk .qt{font-size:12.5px;line-height:1.75;color:var(--ink);padding-left:10px;border-left:3px solid var(--gold-l);}
+  .qblk .qs{font-size:11.5px;color:var(--ink3);line-height:1.65;padding-left:10px;}
+  .legend{display:flex;flex-direction:column;gap:9px;font-size:12.5px;color:var(--ink2);}
+  .legend .lg{display:flex;align-items:center;gap:10px;}
+  .legend i.p{border-top:none;width:9px;height:9px;border-radius:50%;background:#fff;border:2.4px solid var(--gold);flex:none;margin:0 10px;}
+  .legend i.g{border-top:none;width:9px;height:9px;border-radius:50%;background:#EAF6F0;border:2.4px solid var(--green);flex:none;margin:0 10px;}
+  .src{margin-top:auto;font-size:11px;color:var(--ink3);line-height:1.7;}
+
+  /* ---------- tooltip ---------- */
+  .tip{
+    position:absolute;z-index:50;pointer-events:none;opacity:0;transform:translateY(4px);
+    transition:opacity .14s,transform .14s;
+    background:rgba(255,255,255,.97);border:1px solid var(--line);border-radius:10px;
+    box-shadow:0 10px 30px rgba(43,43,38,.14);
+    padding:10px 13px;max-width:270px;font-size:12.5px;line-height:1.65;color:var(--ink);
+  }
+  .tip.on{opacity:1;transform:translateY(0);}
+  .tip .tt{font-size:13.5px;font-weight:800;margin-bottom:3px;}
+  .tip .tv{color:var(--ink2);}
+  .tip .tv b{color:var(--gold);}
+  .tip .tv g{color:var(--green);font-weight:700;}
+  @media (max-width:900px){
+    .wrap{flex-direction:column;}
+    .mapbox{height:56vh;}
+    .panel{width:100%;height:auto;border-left:none;border-top:1px solid var(--line);}
+  }
+  /* ===== 嵌入长页模式：iframe 内不留 100vh，跟随容器高度 ===== */
+  body.embed,body.embed .wrap{height:100%;min-height:0;}
+  body.embed{background:transparent;}
+  /* 图谱 SVG 的 viewBox 左右留白较大，嵌入时裁掉一点视觉边距 */
+  body.embed .mapbox{padding:0;}
+  /* 图内标题与外层图注重复，嵌入时隐藏，把上方空间让给图谱 */
+  body.embed .gtitle, body.embed .gsub{display:none;}
+  body.embed svg#map{transform:scale(1.08);transform-origin:50% 56%;}
+  /* svg 是 1150×800 的 viewBox，乘 1.08 后实际渲染 831px 高 > 769px 容器，
+     溢出会在 body 上产生 27px 可滚动高度，把侧栏最后一行推出可视区。
+     这里明确裁掉地图框的溢出（图谱本身的节点都在安全区内） */
+  body.embed .mapbox{overflow:hidden;}
+  /* 标题与结论句由主页面承担，这里只保留图谱 + 总览面板 */
+  body.embed .panel .chip,
+  body.embed .panel > h2,
+  body.embed .panel > .sub{display:none;}
+  /* 长数据来源与口径说明由主页面图注统一承担：
+     子页里这段有 8 行、高度 217px，把内容顶出 720px 容器底部被裁掉。
+     嵌入时长段直接省略，只留下一行口径提示 */
+  body.embed .src{margin-top:8px;font-size:10px;line-height:1.45;opacity:.62;max-height:2.9em;overflow:hidden;}
+  /* 嵌入模式：高度交给父页面的 .wrap（父页面按 0.70 宽高比预留） */
+  /* 注意：不能给 body 加 overflow:hidden，否则内层元素会把 body 的
+     scrollHeight 撑大（svg 内容本身是 1150×800 的 viewBox，比容器高） */
+  body.embed .wrap{height:100vh;}
+  /* tooltip 绝对定位在 mapbox 内，默认 top:0 时是布局内的定位起点，
+     这里钉到左上角，避免参与高度计算把容器撑高 */
+  body.embed .tip{top:0;left:0;}
+  body.embed .src > br{display:none;}
+  body.embed .src > b{display:none;}
+  /* 窄屏：图谱在上、面板在下，整体按内容高度排（父页面会同步放高 iframe） */
+  @media (max-width:1000px){
+    body.embed .wrap{flex-direction:column;height:auto;}
+    body.embed .mapbox{height:min(78vw,520px);flex:none;width:100%;}
+    body.embed .panel{width:100%;height:auto;border-left:none;border-top:1px solid var(--line);padding-bottom:8px;}
+    body.embed .card{max-height:none;}
+  }
+</style>
+</head>
+<body data-page-node-id="99jT58gFtHbrwn53AMZREB">
+<div class="wrap" data-page-node-id="Qyj1kAPi0jKgdwKWdZEpvh">
+  <div class="mapbox" id="mapbox" data-page-node-id="ZesfkXz8NKe0MgaVmj1F3Q">
+    <svg id="map" viewBox="0 0 1150 800" preserveAspectRatio="xMidYMid meet" data-page-node-id="WHoj1qtkgeATobrJNL3OLA">
+      <defs data-page-node-id="yWI4MDeL4IePOLcfu2RFOO">
+        <radialGradient id="gGold" cx="50%" cy="50%" r="50%" data-page-node-id="7f2urZuF1MIevkh7OM4QxS">
+          <stop offset="0%" stop-color="#FFE9B8" data-page-node-id="FZIj496ktIzByfMOb3ZwpO"/><stop offset="100%" stop-color="#E3B85C" data-page-node-id="tAFSOimhqv4B3689Qm3Xja"/>
+        </radialGradient>
+        <radialGradient id="gGreen" cx="50%" cy="50%" r="50%" data-page-node-id="RRPIBJAKDbvR5QN5poX3gw">
+          <stop offset="0%" stop-color="#C4F0DC" data-page-node-id="pqacRZPP69rMhlspYfFcD7"/><stop offset="100%" stop-color="#4FBF9A" data-page-node-id="hGxudBdIAgmdtB0wC3e5gv"/>
+        </radialGradient>
+        <filter id="soft" x="-40%" y="-40%" width="180%" height="180%" data-page-node-id="J42ZHQUR6IEBKvCSy1zWuR">
+          <feGaussianBlur stdDeviation="5" data-page-node-id="snOdsByHIzFwX33ME6dwmo"/>
+        </filter>
+        <!-- 流向箭头：userSpaceOnUse 保证不随线宽缩放，尺寸做大以示醒目 -->
+        <marker id="arwG" viewBox="0 0 12 12" refX="11" refY="6"
+                markerWidth="15" markerHeight="15" markerUnits="userSpaceOnUse" orient="auto" data-page-node-id="pziwOCM8dVXlARwiEVD1W9">
+          <path d="M 0 1 L 11 6 L 0 11 Z" fill="#B98A2B" data-page-node-id="uC2VuuiHJ1yHWPoZ9fkAv1"/>
+        </marker>
+        <marker id="arwGr" viewBox="0 0 12 12" refX="11" refY="6"
+                markerWidth="15" markerHeight="15" markerUnits="userSpaceOnUse" orient="auto" data-page-node-id="CydQPH6FkKVyNqDyYUfP21">
+          <path d="M 0 1 L 11 6 L 0 11 Z" fill="#2E8B6E" data-page-node-id="wEDHxhFlFFnHaMrsQlj4Hq"/>
+        </marker>
+      </defs>
+
+      <g id="gFlow" data-page-node-id="hSVxWgiG22PSZuPq0yULlF"></g>
+      <g id="gDeal" data-page-node-id="EgBlamVmwiWqo6Ow7L7gBf"></g>
+      <g id="gGlow" data-page-node-id="vfErsynIIKUbCtTZdTyiyK"></g>
+      <g id="gNode" data-page-node-id="2NaM2IpcH0QHv1zbizwgDt"></g>
+    </svg>
+    <div class="tip" id="tip" data-page-node-id="FEUwPQxIy7M2rqcv5dGDuT"></div>
+  </div>
+
+  <aside class="panel" data-page-node-id="qs9cDBPoRrkkhPSgfpDrNA">
+    <span class="chip" data-page-node-id="MbjSsnCNJHHRzDvBf4cO2h">第五章 · 可视化</span>
+    <h2 data-page-node-id="RtysBmJG309WzLfOQZseGL">互利共护：让每一份守护都有回馈</h2>
+    <p class="sub" data-page-node-id="XKz4hijUqObmQHz2quAJ5C">中央财政纵向托底，省际机制横向回馈——两条资金流，同向守护大河青绿。</p>
+    <div class="card" id="pcard" data-page-node-id="sfQzbdpLqOHMZkMjs9CiFg"></div>
+    <div class="legend" data-page-node-id="Drnsflzvoa9FBa66Hx9L8V">
+      <div class="lg" data-page-node-id="CObfHE59YpwqTY3bHWGiiS">
+        <svg width="30" height="10" viewBox="0 0 30 10" data-page-node-id="dIMPKLoBwQX52jvyxhEfk8"><line x1="0" y1="5" x2="20" y2="5" stroke="#B98A2B" stroke-width="3" stroke-linecap="round" data-page-node-id="XjKCgcWxBK9beLzv0fMo01"/><path d="M20 1.5 L28.5 5 L20 8.5 Z" fill="#B98A2B" data-page-node-id="ydpwvmumgkfg2SdTKrhrRH"/></svg>
+        纵向 · 中央财政 → 九省（线宽 ∝ 转移支付金额）
+      </div>
+      <div class="lg" data-page-node-id="68GRgqkPoPBuL1KDfyNcFY">
+        <svg width="30" height="10" viewBox="0 0 30 10" data-page-node-id="P3hQpQdZyUw5ZC6FIVyDRv"><line x1="0" y1="5" x2="20" y2="5" stroke="#2E8B6E" stroke-width="3" stroke-linecap="round" data-page-node-id="jZ1700nEILwENjRO7CDVj2"/><path d="M20 1.5 L28.5 5 L20 8.5 Z" fill="#2E8B6E" data-page-node-id="k920vBkV85H7i0KjXBIZkn"/></svg>
+        横向 · 省际流域生态补偿（下游 → 上中游）
+      </div>
+      <div class="lg" data-page-node-id="hb69LnXbxmhzdZHxPK2rBK"><i class="p" data-page-node-id="rrqRD3VOw0FMSTGhlAjaQH"></i>省份节点（圆内为 2024 年决算数）</div>
+      <div class="lg" data-page-node-id="ZOd6DCWeRi3QDQAEQkkedr"><i class="g" data-page-node-id="WFg4ECejsYJf0dIzaa4Gvm"></i>省际补偿协议节点</div>
+    </div>
+    <div class="src" data-page-node-id="XyJceSkEQkzh8xm2zvD59A">
+      数据来源：财政部预算司《重点生态功能区转移支付明细表》（2024 年决算数）；生态环境部官网专题《让保护者受益 让损害者担责——甘肃省生态补偿与生态环境损害赔偿制度实践》（2026.2）；人民日报海外版（2025.7.15）；山东省人民政府官网（2021.5、2025.10.21）；甘肃省财政厅预算执行情况报告（2025.1）；三江源国家公园官网；内蒙古、陕西、山西省人民政府官网（2025.11）；国务院关于 2025 年中央决算的报告（2026.6）。<br data-page-node-id="Rk1q9I0lbcM7MzBfc3ksLY">
+      口径说明：合计 404.24 亿元为九省 2024 年决算数<b>精确加总</b>（90.37+66.67+62.69+53.26+42.50+34.22+22.72+17.61+14.20），非估算值；各省节点圆内数值四舍五入至一位小数（圆内数直接相加为 404.3，与精确值的差异纯来自四舍五入）。金色数值为沿黄九省重点生态功能区转移支付，系中央财政支持的组成部分；绿色数值为省际横向生态补偿兑现/共设规模。悬停任意节点，可在右侧查看对应官方原文引用。本图为作品设计演示稿。
+    </div>
+  </aside>
+</div>
+
+<script>
+(function(){
+"use strict";
+
+/* ================= 图谱布局 ================= */
+// 中心辐射状知识图谱：中心=流域生态资金，一级环=九省（顺时针按上中下游），
+// 二级=各省参与的补偿协议节点，挂在签约核心省外侧
+var CX = 575, CY = 390;          // 中心
+var R1 = 230, R2 = 385;          // 一级 / 二级环半径
+
+function polar(cx, cy, r, deg){
+  var a = deg * Math.PI / 180;
+  return {x: cx + r * Math.cos(a), y: cy + r * Math.sin(a)};
+}
+
+var PROV = {
+  "青海":  {ang:-90, tp:62.7, tpExact:"62.69", role:"中华水塔 · 源头守护",
+            quote:"三江源地处青藏高原腹地，是长江、黄河、澜沧江的发源地，被誉为“中华水塔”。",
+            src:"三江源国家公园官网 · 公园概况",
+            deals:["甘青协议获甘肃兑现 2000 万元，源头保护获得实质性补偿"]},
+  "四川":  {ang:-50, tp:66.7, tpExact:"66.67", role:"水源涵养 · 黄河上游",
+            quote:"财政部、生态环境部就甘肃省与青海签订协议后实现实质性补偿、甘肃省与四川省签订协议后玛曲断面水质由Ⅱ类提升为Ⅰ类，提出专门表扬。",
+            src:"生态环境部官网专题（2026.2）",
+            deals:["与甘肃两轮签约、按 1:1 共设 1 亿元资金池","玛曲跨界断面水质由 Ⅱ 类提升为 Ⅰ 类"]},
+  "甘肃":  {ang:-10, tp:90.4, tpExact:"90.37", role:"黄土高原水土保持",
+            quote:"重点生态功能区转移支付规模保持全国第一。",
+            src:"甘肃省财政厅 · 2024 年预算执行情况报告（2025.1）",
+            deals:["与上下游省份全部建立生态补偿机制","与青海、四川、宁夏三省签订省际横向补偿协议","向青海兑现 2000 万元","与四川按 1:1 共设 1 亿元资金池"]},
+  "宁夏":  {ang:30,  tp:22.7, tpExact:"22.72", role:"河套绿洲 · 防沙固沙",
+            quote:"2023年6月，与宁夏回族自治区签订《黄河流域（甘肃—宁夏段）横向生态补偿协议》，根据五佛寺断面水质考核情况，两省互不补偿。",
+            src:"生态环境部官网专题（2026.2）",
+            deals:["2023.6 与甘肃签约，五佛寺断面达标、两省互不补偿"]},
+  "内蒙古":{ang:70,  tp:42.5, tpExact:"42.50", role:"北疆生态屏障",
+            quote:"以主力先锋的势头和劲头打响黄河“几字弯”攻坚战，黄河干流水质连续5年稳定在Ⅱ类优良水平。",
+            src:"内蒙古自治区人民政府官网（2025.11）",
+            deals:["国家重点生态功能区全覆盖，筑牢流域北部生态屏障"]},
+  "陕西":  {ang:110, tp:53.3, tpExact:"53.26", role:"黄土高原治理主战场",
+            quote:"使陕西入黄泥沙由上世纪的年均8亿吨减少到1亿吨左右，黄河中下游淤积得到有效减缓。",
+            src:"陕西省政府新闻办发布会（2025.11）",
+            deals:["黄土高原水土流失治理面积持续提升"]},
+  "山西":  {ang:150, tp:14.2, tpExact:"14.20", role:"汾河源头保护",
+            quote:"2024年汾河入黄口庙前村断面首次达到Ⅲ类优良水质。",
+            src:"山西省政府新闻发布会（2025.11）",
+            deals:["汾河流域生态保护与修复持续推进"]},
+  "河南":  {ang:190, tp:34.2, tpExact:"34.22", role:"滩区安居 · 水质守护",
+            quote:"自2021年豫鲁两省建立横向生态保护补偿机制以来，山东省已累计向河南省兑现生态补偿金2.5亿元。",
+            src:"人民日报海外版（2025.7.15）",
+            deals:["豫鲁协议累计获山东兑现 2.5 亿元（黄河流域首例）"]},
+  "山东":  {ang:230, tp:17.6, tpExact:"17.61", role:"河口生态守护",
+            quote:"山东率先在全国实现县际流域横向生态补偿全覆盖，全省拥有跨界河流的133个县（市、区）全部签订协议，共涉及断面301个。",
+            src:"山东省人民政府官网（2025.10.21）",
+            deals:["豫鲁协议出资方","省内 133 个县全部签订县际协议、301 个考核断面，累计补偿 22.29 亿元"]}
+};
+Object.keys(PROV).forEach(function(k){
+  var p = polar(CX, CY, R1, PROV[k].ang);
+  PROV[k].x = p.x; PROV[k].y = p.y;
+});
+
+// 横向协议节点：挂在签约核心省外侧（甘肃 3 个 + 山东 1 个）
+var DEALS = [
+  {a:"山东", b:"河南", amt:"2.5 亿元", ang:230, title:"豫鲁横向生态补偿", lab:"鲁 → 豫",
+   note:"2021 年 4 月签署，黄河流域首例省际横向补偿协议。以刘庄国控断面水质为考核标尺，水质在Ⅲ类基础上每改善一个类别，山东补偿河南 6000 万元；累计兑现 2.5 亿元，其中 2024 年度单笔 6207 万元。",
+   q:[{t:"水质年均值在Ⅲ类基础上每改善一个水质类别，山东省给予河南省6000万元补偿资金", s:"山东省人民政府官网（2021.5）"},
+      {t:"自2021年豫鲁两省建立横向生态保护补偿机制以来，山东省已累计向河南省兑现生态补偿金2.5亿元", s:"人民日报海外版（2025.7.15）"}]},
+  {a:"甘肃", b:"青海", amt:"2000 万元", ang:-52, title:"甘青横向生态补偿", lab:"甘 → 青",
+   note:"2024 年 6 月签署。玛曲跨界断面水质由 Ⅱ 类提升为 Ⅰ 类后，甘肃向青海兑现 2000 万元——协议签署后实现实质性补偿，获财政部、生态环境部专门表扬。",
+   q:[{t:"2024年6月，与黄河流域源头青海省签订跨省际流域横向生态保护补偿协议，根据协议，甘肃省向青海省补偿资金2000万元", s:"生态环境部官网专题（2026.2）"}]},
+  {a:"四川", b:"甘肃", amt:"1 亿元", ang:-14, title:"川甘两轮补偿协议", lab:"川 ↔ 甘",
+   note:"2021、2023 年两轮签约，两省按 1:1 共设 1 亿元资金池；玛曲断面水质由 Ⅱ 类提升为 Ⅰ 类、考核达标，两省互不补偿，获财政部、生态环境部专门表扬。",
+   q:[{t:"2021年、2023年，与四川省先后签订两轮《黄河流域（四川—甘肃段）横向生态补偿协议》，根据玛曲断面水质考核情况，两省互不补偿", s:"生态环境部官网专题（2026.2）"}]},
+  {a:"甘肃", b:"宁夏", amt:"互不补偿", ang:28, title:"甘宁横向生态补偿", lab:"甘 ↔ 宁",
+   note:"2023 年 6 月签署，以五佛寺断面水质为考核标尺；断面稳定达标，两省互不补偿——机制有效运转的最好证明。",
+   q:[{t:"2023年6月，与宁夏回族自治区签订《黄河流域（甘肃—宁夏段）横向生态补偿协议》，根据五佛寺断面水质考核情况，两省互不补偿", s:"生态环境部官网专题（2026.2）"}]}
+];
+DEALS.forEach(function(d){
+  var p = polar(CX, CY, R2, d.ang);
+  d.x = p.x; d.y = p.y;
+});
+
+var SVGNS = "http://www.w3.org/2000/svg";
+var map = document.getElementById("map");
+var tip = document.getElementById("tip");
+var mapbox = document.getElementById("mapbox");
+var pcard = document.getElementById("pcard");
+
+function el(name, attrs, parent){
+  var e = document.createElementNS(SVGNS, name);
+  for(var k in attrs) e.setAttribute(k, attrs[k]);
+  if(parent) parent.appendChild(e);
+  return e;
+}
+// 沿 from→to 方向把端点从圆心外移 gap，供箭头停在节点圈外
+function trim(x1, y1, x2, y2, gap){
+  var dx = x2 - x1, dy = y2 - y1, L = Math.hypot(dx, dy);
+  return {x: x2 - dx / L * gap, y: y2 - dy / L * gap};
+}
+
+/* ================= 图题 ================= */
+(function(){
+  var g = document.getElementById("gNode");
+  var t = el("text", {x:40, y:52, "class":"gtitle"}, g);
+  t.textContent = "流域生态资金双向流动图谱";
+  var s = el("text", {x:40, y:74, "class":"gsub"}, g);
+  s.textContent = "九省按上游 → 中游 → 下游顺时针环布 · 箭头表示资金流向 · 悬停查看详情";
+})();
+
+/* ================= 纵向流线（中心 → 九省） ================= */
+var TPMIN = 14.2, TPMAX = 90.4;
+function lineW(v){ return 2.6 + (v - TPMIN) / (TPMAX - TPMIN) * 6.2; }
+
+var gFlow = document.getElementById("gFlow");
+var LINES = [];
+var order = ["青海","四川","甘肃","宁夏","内蒙古","陕西","山西","河南","山东"];
+var phase = 0;
+order.forEach(function(name){
+  var p = PROV[name];
+  var s = trim(p.x, p.y, CX, CY, 70);
+  var e = trim(CX, CY, p.x, p.y, 48);
+  var mx = (s.x + e.x) / 2, my = (s.y + e.y) / 2;
+  var dx = e.x - s.x, dy = e.y - s.y, len = Math.hypot(dx, dy);
+  var nx = -dy / len, ny = dx / len;
+  var off = len * 0.05 * ((phase % 2 === 0) ? 1 : -1);
+  phase++;
+  var cxp = mx + nx * off, cyp = my + ny * off;
+  var d = "M " + s.x.toFixed(1) + " " + s.y.toFixed(1) + " Q " + cxp.toFixed(1) + " " + cyp.toFixed(1) + " " + e.x.toFixed(1) + " " + e.y.toFixed(1);
+  var w = lineW(p.tp);
+  var path = el("path", {d:d, "class":"fline", "stroke-width":w.toFixed(1), "marker-end":"url(#arwG)"}, gFlow);
+  var L = path.getTotalLength();
+  path.style.strokeDasharray = L;
+  path.style.strokeDashoffset = L;
+  path.style.transition = "stroke-dashoffset 1.1s ease-out";
+  setTimeout(function(){ path.style.strokeDashoffset = 0; }, 120 + phase * 80);
+
+  // 光点
+  var g = el("g", {"class":"glow"}, document.getElementById("gGlow"));
+  var halo = el("circle", {r:9, fill:"url(#gGold)", opacity:.28, filter:"url(#soft)"}, g);
+  var dot = el("circle", {r:3.6, fill:"url(#gGold)"}, g);
+  LINES.push({path:path, len:L, dots:[{g:g, halo:halo, dot:dot, t:Math.random(), speed:0.055 + Math.random()*0.03}]});
+});
+
+/* ================= 横向流线（省 → 协议节点） ================= */
+var gDeal = document.getElementById("gDeal");
+DEALS.forEach(function(dl, idx){
+  var pa = PROV[dl.a];
+  var s = trim(dl.x, dl.y, pa.x, pa.y, 44);
+  var e = trim(pa.x, pa.y, dl.x, dl.y, 34);
+  var mx = (s.x + e.x) / 2, my = (s.y + e.y) / 2;
+  var dx = e.x - s.x, dy = e.y - s.y, len = Math.hypot(dx, dy);
+  var nx = -dy / len, ny = dx / len;
+  var off = Math.min(60, len * 0.18) * ((idx % 2 === 0) ? 1 : -1);
+  var cxp = mx + nx * off, cyp = my + ny * off;
+  var d = "M " + s.x.toFixed(1) + " " + s.y.toFixed(1) + " Q " + cxp.toFixed(1) + " " + cyp.toFixed(1) + " " + e.x.toFixed(1) + " " + e.y.toFixed(1);
+  var g = el("g", {"class":"deal"}, gDeal);
+  var w = (dl.a === "山东") ? 5.4 : 3.6;
+  var path = el("path", {d:d, "class":"dline", "stroke-width":w, "marker-end":"url(#arwGr)"}, g);
+  el("path", {d:d, "class":"hit"}, g);
+  var L = path.getTotalLength();
+  path.style.strokeDasharray = L;
+  path.style.strokeDashoffset = L;
+  path.style.transition = "stroke-dashoffset 1.1s ease-out";
+  setTimeout(function(){ path.style.strokeDashoffset = 0; }, 900 + idx * 130);
+
+  // 光点
+  var halo = el("circle", {r:8, fill:"url(#gGreen)", opacity:.3, filter:"url(#soft)"}, document.getElementById("gGlow"));
+  var dot = el("circle", {r:3.2, fill:"url(#gGreen)"}, document.getElementById("gGlow"));
+  LINES.push({path:path, len:L, dots:[{g:document.getElementById("gGlow"), halo:halo, dot:dot, t:Math.random(), speed:0.05}]});
+
+  // 协议节点圆 + 文字
+  var cg = el("g", {"class":"dealNode"}, g);
+  el("circle", {"class":"hit", cx:dl.x, cy:dl.y, r:40}, cg);
+  el("circle", {"class":"dn", cx:dl.x, cy:dl.y, r:33}, cg);
+  var t1 = el("text", {x:dl.x, y:dl.y - 1, "text-anchor":"middle", "class":"dn1"}, cg);
+  t1.textContent = dl.lab;
+  var t2 = el("text", {x:dl.x, y:dl.y + 16, "text-anchor":"middle", "class":"dn2"}, cg);
+  t2.textContent = dl.amt;
+
+  g.addEventListener("mouseenter", function(ev){ showDeal(idx); showTipDeal(ev, idx); });
+  g.addEventListener("mouseleave", function(){ hideTip(); showOverview(); });
+  g.addEventListener("click", function(ev){ ev.stopPropagation(); showDeal(idx); });
+});
+
+/* ================= 中心节点 ================= */
+var gNode = document.getElementById("gNode");
+var cc = el("g", {"class":"centerNode"}, gNode);
+el("circle", {cx:CX, cy:CY, r:74, fill:"rgba(185,138,43,.08)"}, cc);
+el("circle", {cx:CX, cy:CY, r:62, fill:"#fff", stroke:"#B98A2B", "stroke-width":2.6}, cc);
+var star = el("path", {d:"M " + CX + " " + (CY-38) +
+  " L " + (CX+11) + " " + (CY-12) + " L " + (CX+36) + " " + (CY-12) + " L " + (CX+17) + " " + (CY+5) +
+  " L " + (CX+23) + " " + (CY+32) + " L " + CX + " " + (CY+17) + " L " + (CX-23) + " " + (CY+32) +
+  " L " + (CX-17) + " " + (CY+5) + " L " + (CX-36) + " " + (CY-12) + " L " + (CX-11) + " " + (CY-12) + " Z",
+  fill:"#B98A2B"}, cc);
+var c1 = el("text", {x:CX, y:CY + 44, "text-anchor":"middle", "class":"cc1"}, cc);
+c1.textContent = "流域生态资金";
+var c2 = el("text", {x:CX, y:CY + 62, "text-anchor":"middle", "class":"cc2"}, cc);
+c2.textContent = "双向流动 · 共治共赢";
+
+/* ================= 省份节点 ================= */
+var HAS_DEAL = {"山东":1,"河南":1,"青海":1,"宁夏":1,"甘肃":1,"四川":1};
+order.forEach(function(name){
+  var p = PROV[name];
+  var g = el("g", {"class":"pnode"}, gNode);
+  el("circle", {"class":"hit", cx:p.x, cy:p.y, r:44}, g);
+  el("circle", {"class":"dot", cx:p.x, cy:p.y, r:38}, g);
+  var t1 = el("text", {x:p.x, y:p.y - 4, "text-anchor":"middle", "class":"pv"}, g);
+  t1.textContent = name;
+  var t2 = el("text", {x:p.x, y:p.y + 16, "text-anchor":"middle", "class":"pa"}, g);
+  t2.textContent = p.tp.toFixed(1) + " 亿";
+  if(HAS_DEAL[name]){
+    var t3 = el("text", {x:p.x, y:p.y + 30, "text-anchor":"middle", "class":"pd"}, g);
+    t3.textContent = "▸ 有回馈";
+  }
+  g.addEventListener("mouseenter", function(ev){ showProv(name); showTipProv(ev, name); });
+  g.addEventListener("mouseleave", function(){ hideTip(); showOverview(); });
+  g.addEventListener("click", function(ev){ ev.stopPropagation(); showProv(name); });
+});
+
+/* ================= 右侧面板 ================= */
+function esc(s){ return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;"); }
+
+function showOverview(){
+  pcard.innerHTML =
+    '<div class="ctitle">双向资金流 <span class="tag gold">总览</span></div>' +
+    '<div class="numrow gold"><span class="n">404.24<small>亿元</small></span>' +
+    '<span class="d">沿黄九省重点生态功能区转移支付合计（2024 年决算数，九省分省精确加总）——中央财政纵向托底</span></div>' +
+    '<div class="divline"></div>' +
+    '<div class="numrow green"><span class="n">2.5<small>亿元</small></span>' +
+    '<span class="d">豫鲁横向生态补偿累计兑现（2021.4 签署，黄河流域首例）——下游回馈上游</span></div>' +
+    '<div class="divline"></div>' +
+    '<div class="numrow gold"><span class="n">1205<small>亿元</small></span>' +
+    '<span class="d">2025 年全国重点生态功能区转移支付预算，同比增长 7.5%</span></div>' +
+    '<div class="divline"></div>' +
+    '<div class="numrow green"><span class="n">33<small>个</small></span>' +
+    '<span class="d">全国地方层面已建立的跨省流域补偿机制；长江、黄河干流已建立中央层面统一补偿机制（2025 年决算）</span></div>';
+}
+
+function showProv(name){
+  var p = PROV[name];
+  var li = p.deals.map(function(d){ return "<li>" + esc(d) + "</li>"; }).join("");
+  pcard.innerHTML =
+    '<div class="ctitle">' + esc(name) + ' <span class="tag gold">转移支付 ' + p.tp.toFixed(1) + ' 亿元</span></div>' +
+    '<div class="kv"><span class="k">流域角色</span><span class="v">' + esc(p.role) + '</span></div>' +
+    '<div class="divline"></div>' +
+    '<div class="kv"><span class="k">守护与回馈</span><ul>' + li + '</ul></div>' +
+    '<div class="divline"></div>' +
+    '<div class="qblk"><span class="qh">原文引用</span>' +
+    '<div class="qt">“' + esc(p.quote) + '”</div>' +
+    '<div class="qs">—— ' + esc(p.src) + '</div>' +
+    '<div class="qs">转移支付 ' + p.tpExact + ' 亿元（2024 年决算数，圆内四舍五入至一位小数）：财政部预算司《重点生态功能区转移支付明细表》</div></div>';
+}
+
+function showDeal(i){
+  var d = DEALS[i];
+  var qs = d.q.map(function(x){
+    return '<div class="qt">“' + esc(x.t) + '”</div><div class="qs">—— ' + esc(x.s) + '</div>';
+  }).join("");
+  pcard.innerHTML =
+    '<div class="ctitle">' + esc(d.title) + ' <span class="tag green">' + esc(d.amt) + '</span></div>' +
+    '<div class="kv"><span class="k">协议双方</span><span class="v">' + esc(d.a) + ' → ' + esc(d.b) + '（下游 → 上中游）</span></div>' +
+    '<div class="divline"></div>' +
+    '<div class="kv"><span class="k">机制说明</span><span class="v">' + esc(d.note) + '</span></div>' +
+    '<div class="divline"></div>' +
+    '<div class="qblk"><span class="qh">原文引用</span>' + qs + '</div>';
+}
+showOverview();
+
+/* ================= tooltip ================= */
+function tipProv(name){
+  var p = PROV[name];
+  return '<div class="tt">' + esc(name) + '</div>' +
+    '<div class="tv">转移支付 <b>' + p.tp.toFixed(1) + ' 亿元</b>（2024 年决算数）<br>' + esc(p.role) + '</div>';
+}
+function tipDeal(i){
+  var d = DEALS[i];
+  return '<div class="tt">' + esc(d.title) + '</div>' +
+    '<div class="tv">' + esc(d.a) + ' → ' + esc(d.b) + ' · <g>' + esc(d.amt) + '</g></div>';
+}
+function showTipProv(ev, name){
+  tip.innerHTML = tipProv(name);
+  place(ev); tip.classList.add("on");
+}
+function showTipDeal(ev, i){
+  tip.innerHTML = tipDeal(i);
+  place(ev); tip.classList.add("on");
+}
+function hideTip(){ tip.classList.remove("on"); }
+function place(ev){
+  var r = mapbox.getBoundingClientRect();
+  var x = ev.clientX - r.left + 16, y = ev.clientY - r.top + 14;
+  var tw = tip.offsetWidth, th = tip.offsetHeight;
+  if(x + tw > r.width - 8) x = ev.clientX - r.left - tw - 14;
+  if(y + th > r.height - 8) y = ev.clientY - r.top - th - 12;
+  tip.style.left = x + "px"; tip.style.top = y + "px";
+}
+
+/* ================= 光点动画 ================= */
+var last = 0;
+function tick(now){
+  if(!last) last = now;
+  var dt = Math.min(0.05, (now - last) / 1000); last = now;
+  for(var i = 0; i < LINES.length; i++){
+    var L = LINES[i], dots = L.dots;
+    for(var j = 0; j < dots.length; j++){
+      var d = dots[j];
+      d.t += d.speed * dt;
+      if(d.t > 1) d.t -= 1;
+      var pt = L.path.getPointAtLength(d.t * L.len);
+      d.dot.setAttribute("cx", pt.x); d.dot.setAttribute("cy", pt.y);
+      d.halo.setAttribute("cx", pt.x); d.halo.setAttribute("cy", pt.y);
+    }
+  }
+  requestAnimationFrame(tick);
+}
+requestAnimationFrame(tick);
+
+})();
+</script>
+<script>
+if(/[?&]embed=1/.test(location.search)){ document.body.classList.add('embed'); }
+</script>
+</body>
+</html>

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <title>黄河流域水土保持率变化趋势（2019-2025）</title>
+  <script src="echarts.min.js"></script>
+  <script>if(typeof echarts==="undefined"){document.write('<script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"><\/script>');}</script>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: "Noto Sans SC","PingFang SC","Microsoft YaHei",sans-serif;
+      background: #FDFBEF;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 8px 0 4px;
+    }
+    #main { width: 100%; max-width: 1000px; height: 600px; }
+    .footer { color: #9A988C; font-size: 12px; text-align: center; line-height: 1.7; padding: 0 16px; }
+    @media (max-width:900px){ #main{height:440px;} .footer{font-size:11px;} }
+    /* 被父页面 iframe 嵌入时：隐藏内部页脚（来源小字由父页面统一给出） */
+    body.embed .footer { display: none; }
+    /* 嵌入模式：图表高度交给父页面按容器高度铺满（父页面已按 0.62 宽高比预留） */
+    body.embed { padding: 0; }
+    body.embed #main { height: 100vh; max-width: none; }
+  
+    /* 嵌入模式：图表容器顶到边框，去掉上下内边距避免底部被裁 */
+    body.embed{padding:0 !important;}
+    body.embed #main{padding:0 !important;margin:0 !important;}
+  </style>
+</head>
+<body>
+  <div id="main"></div>
+  <div class="footer">数据来源：黄河流域水土保持公报（2019—2025）｜ 可拖动下方滑块缩放查看任意区间</div>
+
+<script>
+var chartDom = document.getElementById('main');
+var myChart = echarts.init(chartDom);
+
+var C = {
+  ink:'#2B2B26', ink2:'#6B6A60', ink3:'#9A988C',
+  gold:'#B98A2B', goldL:'#E3B85C', line:'#E4E0D4'
+};
+
+// [年份, 水土保持率%]
+var rawData = [
+  [2019, 66.75],
+  [2020, 66.94],
+  [2021, 67.37],
+  [2022, 67.85],
+  [2023, 68.40],
+  [2024, 69.07],
+  [2025, 69.75]
+];
+
+var data = rawData.map(function(item) {
+  return [+new Date(item[0], 0, 1), item[1]];
+});
+
+var option = {
+  backgroundColor: 'transparent',
+  textStyle: { fontFamily: 'Noto Sans SC, PingFang SC, Microsoft YaHei' },
+  title: {
+    left: 'center',
+    top: 4,
+    text: '黄河流域水土保持率变化趋势',
+    subtext: '2019 — 2025｜单位：%',
+    textStyle: { color: C.ink, fontSize: 19, fontWeight: 800 },
+    subtextStyle: { color: C.ink3, fontSize: 12 }
+  },
+  tooltip: {
+    trigger: 'axis',
+    backgroundColor: '#fff',
+    borderColor: C.line,
+    borderWidth: 1,
+    padding: [8, 12],
+    textStyle: { color: C.ink, fontSize: 12.5 },
+    extraCssText: 'box-shadow:0 6px 20px rgba(43,43,38,.12);border-radius:8px;',
+    axisPointer: { type: 'line', lineStyle: { color: C.goldL, width: 1.4 } },
+    formatter: function(params) {
+      var p = params[0];
+      var year = new Date(p.value[0]).getFullYear();
+      return '<b>' + year + ' 年</b><br/>水土保持率：<b style="color:' + C.gold + '">' + p.value[1].toFixed(2) + '%</b>';
+    }
+  },
+  grid: { left: 62, right: 44, top: 96, bottom: 66 },
+  xAxis: {
+    type: 'time',
+    boundaryGap: false,
+    min: 'dataMin',
+    max: 'dataMax',
+    axisLabel: { color: C.ink2, formatter: '{yyyy}', fontSize: 12, showMaxLabel: true, showMinLabel: true, hideOverlap: false, margin: 12 },
+    axisLine: { lineStyle: { color: C.line } },
+    axisTick: { show: false },
+    splitLine: { show: false }
+  },
+  yAxis: {
+    type: 'value',
+    min: 66.5,
+    max: 70.2,
+    interval: 0.5,
+    boundaryGap: [0, '100%'],
+    axisLabel: { color: C.ink2, formatter: '{value}%', fontSize: 12 },
+    axisLine: { show: false },
+    splitLine: { lineStyle: { color: C.line, type: [4, 4] } }
+  },
+  dataZoom: [
+    { type: 'inside', start: 0, end: 100 },
+    {
+      type: 'slider', start: 0, end: 100, height: 20, bottom: 14,
+      borderColor: 'transparent',
+      backgroundColor: '#F5F0E0',
+      fillerColor: 'rgba(227,184,92,.26)',
+      handleStyle: { color: C.goldL, borderColor: C.gold, borderWidth: 1 },
+      moveHandleSize: 0,
+      dataBackground: { lineStyle: { color: C.goldL }, areaStyle: { color: 'rgba(227,184,92,.18)' } },
+      textStyle: { color: C.ink3, fontSize: 11 }
+    }
+  ],
+  series: [
+    {
+      name: '水土保持率',
+      type: 'line',
+      smooth: true,
+      symbol: 'circle',
+      symbolSize: 8,
+      showSymbol: true,
+      lineStyle: { color: C.gold, width: 3, shadowColor: 'rgba(185,138,43,.22)', shadowBlur: 10, shadowOffsetY: 4 },
+      itemStyle: { color: '#fff', borderColor: C.gold, borderWidth: 2.4 },
+      areaStyle: {
+        color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+          { offset: 0, color: 'rgba(227,184,92,.40)' },
+          { offset: 1, color: 'rgba(227,184,92,.02)' }
+        ])
+      },
+      data: data,
+      label: {
+        show: true,
+        position: 'top',
+        distance: 10,
+        color: C.ink2,
+        fontSize: 11,
+        align: 'center',
+        formatter: function(p){ return p.value[1].toFixed(2); }
+      },
+      markLine: {
+        symbol: 'none',
+        silent: true,
+        lineStyle: { color: C.ink3, type: 'dashed', width: 1 },
+        label: {
+          color: C.gold,
+          fontSize: 12,
+          fontWeight: 700,
+          position: 'middle',
+          formatter: '六年累计 +3.00 个百分点'
+        },
+        data: [[
+          { coord: [+new Date(2019,0,1), 66.75] },
+          { coord: [+new Date(2025,0,1), 69.75] }
+        ]]
+      }
+    }
+  ]
+};
+
+myChart.setOption(option);
+function safeResize(){
+      var el = document.getElementById('main');
+      if(!el || el.clientWidth < 2 || el.clientHeight < 2) return;
+      myChart.resize();
+    }
+    window.addEventListener('resize', safeResize);
+    if(window.ResizeObserver){ new ResizeObserver(safeResize).observe(document.getElementById('main')); }
+</script>
+<script>if(/[?&]embed=1/.test(location.search)){ document.body.classList.add('embed'); }</script>
+</body>
+</html>
